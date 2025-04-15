@@ -1,0 +1,594 @@
+「エンタテインメントコンピューティングシンポジウム **(EC2024)** 」 **2024** 年 **9** 月
+# バーチャルハンドを用いた選択インタラクションにおける 擬似触覚フィードバックが及ぼす影響の調査
+### 森本浩輔 [1] [,] [a)] 渡邊恵太 [2] [,] [b)]
+
+概要：ユーザの入力と視覚的なずれによって引き起こされる擬似触覚は簡易的に触覚フィードバックを
+
+ユーザに与えることができる . そのため体験向上に触覚フィードバックが重要となる VR コンテンツへの
+
+応用が注目されている . 本研究では, ターゲットの色変化や押し込み変化, バーチャルハンドの指先形状変
+化を用いた擬似触覚に着目した . 実験ではハンドトラッキング操作を用いたフィッツの法則のポインティ
+
+ングタスクを用いて, これらの擬似触覚がパフォーマンスに与える影響を調査した .
+
+キーワード：インタラクション, VR, 擬似触覚, パフォーマンスモデル
+
+## 1. はじめに
+#### Vitrual Reality(VR) において選択行為, 選択動作は基 本的なインタラクションである . VR でのインタラクショ ンには付属のコントローラを使用することが多いが, 近年 ではハンドトラッキングを用いた操作が注目されている .
+
+ハンドトラッキングを用いた操作では現実の動作をもとに
+#### したアフォーダンスによりユーザに自然で, 直感的な操作 を提供可能である [15]. 一方でコントローラの把持やデバ イスの装着を行わないことから VR でのインタラクション の User Experience(UX) やパフォーマンスを向上させる 触覚フィードバックの提示 [8], [13], [34] が困難な問題が ある . この課題に対するアプローチとして, 疑似触覚 (Pseudo- Hatpics) がある． Pseudo-Haptics は, ユーザの動きと
+
+視覚フィードバックの差異から錯覚的に触覚を提示す
+#### る技術である [3], [19] ．この技術により, 物理的な触 覚フィードバックを使用せずに, サイズ, 重さ, 剛性な ど [9], [11], [23], [27], [33] の触覚的性質を操作すること が可能となる．この疑似触覚を利用し, 3D 空間の User Interface(UI) への応用が注目されている . 具体的な応用 例としてボタン UI の選択時の接触エフェクト [16], [25], 現実世界の物理的メタファー [29] に基づいた UI が提案さ れている . また, 選択動作に応用が可能である擬似触覚手
+
+1 明治大学大学院先端数理科学研究科
+2 明治大学総合数理学部
+a) cs242035@meiji.ac.jp
+b) watanabe@fms.meiji.ac.jp
+
+
+法としてバーチャルハンドの指先形状の変化が挙げられ選
+#### 択インタラクションへの応用が期待できる [23]. これまで の疑似触覚を UI へ応用した研究では, 10 キーの配置のボ
+
+タンを選択した際のパフォーマンス調査やターゲットとの
+
+接触インタラクションに対するユーザエクスペリエンスな
+#### どの調査が実施されてきた [16], [25] ．しかし, これらの研 究で使用した疑似触覚は単一効果のみであった．一方, 物 理ベースの触覚フィードバックでは, 複数の種類の異なる
+
+フィードバックを組み合わせることで異なる知覚の変容を
+#### 促す, フィードバックの強化が提案されている [22], [30] ． また, 疑似触覚を使用した UI に関するパフォーマンス調査
+
+において標準化されたターゲット選択タスクであるフィッ
+#### ツの法則を使用した比較はない . そこで本研究ではバーチャルハンドの指先形状の変化, ターゲットの色の変化, ターゲットを押し込める変化の 3 種類の疑似触覚 ( 図 1) の単一, 複合での組み合わせを用い た選択インタラクションが VR でのポインティングタスク に与える影響を調査する . 実験 (N=20) では疑似触覚を使 用しない条件と 3 種類の疑似触覚の単一・複合提示条件, 合計 8 条件で ISO 9241-400:2007[1] によって標準化され たポインティングタスクを実施した . 評価項目として操作 時間, 接触時間, 精度を測定と各疑似触覚条件ごとに錯触 覚, 有用性, 身体性, 空間知覚を測定するカスタムアンケー トを実施した . 我々の研究は, 以下のリサーチクエスチョ ンに基づいている . RQ1. 各疑似触覚条件においてパフォーマンスを向上させ
+
+る条件は何か？
+#### RQ2. 各疑似触覚条件においてフィッツの法則のモデルは
+
+
+⃝c 2024 Information Processing Society of Japan 46
+
+
+-----
+
+図 **1** 本研究で使用する 3 つの疑似触覚 .(A) ：ターゲットを選択前の疑似触覚が適応されていな
+
+い状態 .(B) ：指先形状が変化する疑似触覚 .(C) ターゲットの色が変化する疑似触覚 .(D) ：
+
+ターゲットが押し込める疑似触覚 .
+
+
+適合するか？
+#### RQ3. 各疑似触覚条件におけるカスタムアンケートにて
+
+ユーザに好まれやすい条件は何か？
+#### RQ4. 複数の疑似触覚を組み合わせることでユーザが感じ
+
+る錯覚的なフィードバックは強化されるか？
+#### 実験の結果, パフォーマンスではターゲットの色の変化を 用いた疑似触覚がタスク速度を向上させることを示し, ター
+
+ゲットを押し込むことのできる変化を用いた疑似触覚は速
+#### 度を増加させ, タスク精度を向上させることを示した . カ スタムアンケートでは錯触覚, 操作性, 空間知覚の項目すべ てにおいて, 指先形状の変化を用いた疑似触覚条件が高い スコアを記録した . 本研究の貢献は以下の通りである . (1)VR 空間における選択インタラクションの際に, 3 つの
+
+疑似触覚条件が与える影響を標準化されたポインティング
+#### タスクを用いて, 評価と主観評価の調査を実施した . (2) パフォーマンス評価の速度においてターゲットの色が 変化する疑似触覚が有用である一方, 押し込み変化の疑似 触覚は時間を増加させることを明らかにした . (3) カスタムアンケートを用いた心理物理評価では指先形 状が変化する疑似触覚条件が錯触覚, 操作性, 空間知覚の項 目すべてにおいて高いスコアであることを明らかにした . (5) フィッツの法則に基づく分析を行い, 各疑似触覚手法の 高いモデル適合性を明らかにした .
+## 2. 関連研究
+#### 2.1 疑似触覚と選択インタラクション
+
+ハードウェアを使用せずにユーザに触覚を提示するア
+#### プローチとして pseudo-haptics がある [3], [19] ．これは,
+
+ユーザ自身の動作とそれに対応する視覚フィードバックの
+
+差異から触覚を錯覚的に知覚する現象である．これまでの
+#### 研究では, 形状 [6], [7], 重量 [26], [27], 摩擦 [20], [24], 剛 性 [4], [23] などの多様な触覚が模倣されてきた．疑似触覚
+
+#### は Lecuyer らの受動的なばねとは別の動作をする仮想ばね をディスプレイに表示することで, ユーザが感じる剛性が 変化する提案が起源である [19] ． VR でのインタラクションでも pseudo-haptics が応用 されている． Smad らは現実世界の手とバーチャルハンド のコントールディスプレイ比（ C/D 比）を変化させること で把持物体の重さの知覚に影響を与えることを調査し, VR における重みのシミュレーションに使用できる C/D 比の 範囲の定量化を提供した [27] ．バーチャルハンドの C/D を使用した研究として Weiss ら . は固定剛性の物体を加圧 しながら C/D 比を制御することで, 物体の剛性を変化さ せた [32] ．視覚情報がユーザが知覚する大部分を占める HMD を使用する VR においてこのアプローチは非常に親 和性が高く, 知覚の変容を用いたフィードバックを 3D 空 間の UI に応用することも注目されている . 3D 空間でのメニュの UI に関連する研究では Speicher らは従来の 2D 型の UI とアフォーダンスをもとにした pseudo-haptics を取り入れた 3D の特徴を持った UI で比 較を行ったところ， 3D 型の UI のほうが主観評価が高い ことを示した [29] ． Kim と Xiong は [17] テキスト入力の
+
+際にバーチャルハンドの指先がキーを貫通しないように
+#### する pseudo-haptics とキーの選択にピンチを用いて行う
+
+インタラクションを用いた際のユーザへの影響を調査し，
+#### ユーザ体験が向上することを明らかにした．また Kim と Xiong は [16]VR 空間におけるボタン選択において複数の 疑似触覚を用いたインタラクション同士の比較を UX の観
+
+点からの比較を実施した．パフォーマンスの評価において
+#### は Park らが 2 種類の疑似触覚を比較を行い, 2D ベースの 疑似触覚のほうがパフォーマンスが高いことを示した . し かし, 10 キーを用いたボタン入力に絞ったタスクを実施し ていることから 3D 空間の選択インタラクションのデザイ ンすべてに当てはまるとは言い切れない .
+
+
+⃝c 2024 Information Processing Society of Japan 47
+
+
+-----
+
+#### 2.2 VR におけるフィッツの法則 フィッツの法則は、 HCI や人間工学で広く使われている 人間による運動の予測モデルである [21]. MacKenzie は情 報伝達のシャノン・ハートレー定理に基づき, ポインティ ングタスクにおけるターゲットの幅 ( W ) とターゲット間 の距離 ( A ) が, タスクの難易度指数 ( ID ) に相当する方程 式 ( 式 1) を提案した [14], [21]. MT = a + bID, ID = log 2( W [A] [+ 1)] [,] (1) また, フィッツの法則は国際標準化機構の ISO 9241- 400:2007 により採用されていることから様々な入出力
+
+デバイスやインタラクション手法でのパフォーマンスを測
+#### 定する標準的な手法である [1]. VR でフィッツの法則を使用して評価をした研究として Schwind らはアバターの手の外見がユーザの入力パフォー マンスに与える影響を調査した [28]. 触覚デバイスの評価 として Kourtesis らは振動刺激と電気刺激が選択パフォー マンスにどのような影響を与えるか調査を実施した [18].
+
+ほかにも視覚と触覚の不一致による影響を調査するために
+#### Brickler らは接地型の触覚デバイスを用いてリングをペグ
+
+からペグに移動させるタスクにおいてフィッツの法則を用
+#### いて解析を実施した [12]. これらの研究よりフィッツの法 則が VR のパフォーマンス測定に対して有用であることが 示されているため, 本研究の疑似触覚のパフォーマンス測 定にもフィッツの法則を使用して解析を実施する .
+## 3. 疑似触覚システム
+#### 本研究で扱うシステムのインタラクションの要となる 3 つの疑似触覚の様子を図 1 に示す． 3.1 ハンドトラッキングシステムと接触
+
+本研究で使用したバーチャルハンドの指先が変化するシ
+#### ステムはハンドトラキングを用いて操作を行う . ハンドト ラッキングには Unity Asset の Oculus (Oculus Integra- tion) [*1] を用いた . 本実験で使用したバーチャルハンドのサ イズはユーザの手のサイズに依存はしていない . 実験で使
+
+用したバーチャルハンドとバーチャルオブジェクトとの接
+#### 触において貫通は起こらないように Oculus Integration の Pokeable Item を使用して実装した . 3.2 疑似触覚ごとの視覚フィードバックの表示方法 finger のデザインについては指先形状のを円形に拡大
+
+変形することで剛性知覚に影響を与えることを明らかにし
+#### た Morimoto らの提案を参考にした [23]. バーチャルハン ドの指先形状の変化アニメーションはの同 Asset の内部に 梱包されている 3D ハンドモデルを改変することで実装し
+
+- [1] https://assetstore.unity.com/packages/tools/integration/oculusintegration-deprecated-82022?locale=ja-JP
+
+#### た . 実装の手順としてまず, バーチャルハンドの 3D モデ
+
+ルの人差し指の第一関節より外側の最も太い箇所を測定し
+#### た (1.3cm). DC ツールである Blender [*2] の機能の一つであ る”シェイプキー”を使用し, オブジェクトと接触した際の 変形アニメーションを作成した . シェイプキーのパラメー タが最高値である 100 の場合に計測をした人差し指の指先 と第一関節の中間部分の長さの 2.25 倍が直径 (3.25cm) と なる円形に指先をモデリングした . 変形アニメーションは 指先形状の最大サイズをシェイプキーの持つ 0-100 のパラ メータで調整が可能である . 0-100 のスケールと指先形状 の変化の関係性についはスケールが 0 の場合が指先の変化 がない ( 等倍 ), 100 の場合は 2.25 倍の変化であり間の指先 形状は線形に変化した . 0-100 のパラメータの使用方法は Unity のシステムからバーチャルハンドの指先とオブジェ
+
+クトの接触を検出した瞬間から時間を軸にアニメーション
+#### が発生する . color のデザインはバーチャルハンドの指先がターゲッ
+
+トに接触した瞬間にターゲットの色が青色から黄色に変化
+#### する . ターゲットに指先が接触し続けている間はターゲッ トの色は黄色の状態で維持する . ターゲットから指先が離 れると黄色から元のターゲットの色に変化する . depth のデザインはターゲットを指先で奥側に動かすこ とができる . ターゲットの移動範囲は表示されている位置 から奥側のみに 2cm 動かすことができた . 指先と接触して いる状態で押し込み距離が 2cm 未満のの場合は指先の位 置によって変化する .
+## 4. 実験
+#### 本実験では, VR 空間でのハンドトラッキングを用いた UI 操作に対して, 3 つの疑似触覚の単一効果と相互作用 効果が与える影響を, パフォーマンスと錯触覚, 操作性, 身体性, 空間知覚に関するカスタムアンケートから調査 した . タスクには, HCI のパフォーマンス評価でよく用 いられるフィッツの法則のポインティングタスクを, ISO 9241-400:20072 のガイドラインに沿って設計した . 本実験 では, ターゲットに触れた際の疑似触覚の種類による影響 を調査することで, 3D 空間の UI 設計における貢献を目的 としている . 4.1 参加者 実験参加者は 20 名（男性 12 名, 女性 8 名, 平均年齢 =21.0 ）で, 18 歳から 24 歳であった．参加者は所属大学内 の SNS を用いて募集をした．参加者はいずれも実験の目 的を知らず, 視力は正常または矯正済みで, 感覚障害などは なく利き手を使用した． VR が未経験の参加者はおらず, 8 名の参加者は 1, 2 回の VR の経験が何度かあり, 9 名の参
+
+- [2] https://www.blender.org/
+
+
+⃝c 2024 Information Processing Society of Japan 48
+
+
+-----
+
+図 **2** 実験で使用したポインティングタスク . 黄色の矢印 ( *W* ) はター
+
+ゲットのサイズを表す . 赤色の点線 ( *A* ) はターゲット間の距離
+
+であり, すべてのターゲット間の距離は一定である .
+#### 加者が月に 1 度など定期的に VR を経験する機会があり, 3 名の参加者が VR を日常的に触れている経験者が専門家 であった . 4.2 実験装置 本実験で利用する疑似触覚体験が可能な VR システムは Unity （バージョン 2021.3.41f ）上に作成した．実験の構 成物はラップトップ型コンピュータ（ intel Core i7-12400, memory32GB, NVIDIA GeForce RTX 3070Ti ）と Meta Quest 3 ヘッドマウントディスプレイ（ HMD ）からなり, 参加者は VR 空間に没入した． VR 空間には参加者のアバ ターは表示せず, 仮想身体となるバーチャルハンドのみを 表示した．実験中, 参加者は椅子に座ったままであった．
+
+アンケートへの回答は実験を行ううえで邪魔にならない位
+#### 置に配置した PC を用いて回答した． 4.3 タスク 本実験では, ISO 9241400:2007[1] のガイドラインに従っ て設計した円形に配置された 12 個のターゲットを選択す るタスクを実施した . タスクの選択は空中で行い, 参加者
+
+がターゲットに触れる際の物理的フィードバックは発生し
+#### ない . 図 2 のように円形に配置されたターゲットは垂直面 に設置し, 参加者は座ってターゲットの選択をおこなうこ とができた . 選択方法は利き手の人差し指を使用して行い, 図 2 のようにすべての試行でターゲット間の距離が一定に なるようにあらかじめ選択順番を決定した . 選択の完了は
+
+ターゲットに指先で触れて離すことによって自動で完了と
+#### なる . これによりポインティングと動作確認を同時に行う
+
+ことで選択の精度に影響を与えるハイゼンベルク効果を回
+#### 避することができる [5]. 参加者が選択すべきターゲット は混乱を避けるため青色のハイライトを使用し, その他の
+
+#### ターゲットは白色に設定した . ターゲットの色が変わる場
+
+面は参加者が選択すべきターゲットから指を離したときで
+#### ある . タスクの各試行は異なるターゲットのサイズ, ターゲット 間の距離で実施した . ターゲットのサイズは 3 種類で実施 した .1) small ( 直径 =1.5cm), 2) medium ( 直径 =2.5cm), 3) large ( 直径 =3.5cm). またターゲット間の距離は 2 種類 で実施した . 1) short = 20cm, 2) long = 40cm. 本タスクではターゲットを選択した際に 3 つの視覚刺激 を用いた疑似触覚を導入した ( 図 1. 4.4 実験手順 参加者は実験の目的の説明を受け, 実験に参加するため の同意書に署名した．この実験は HMD に表示される視覚 刺激に焦点を当てており, 聴覚や温度の影響を排除するた
+
+めに雑音のない静かな教室で行った．周囲に障害物のない
+#### 位置に椅子を配置し, 参加者に着席するように指示した． その後, 使用する HMD の装着方法, ピントの調整方法, ハ ンドトラッキングの操作方法について説明した．次に, 参 加者には VR 空間内での本タスクについて説明し, ハンド トラッキングを用いて操作感の練習を 1 2 分程度実施した .
+
+参加者はタスクの内容についての説明を受けタスクをこな
+
+した．タスクについてはターゲットの選択を「なるべく素
+#### 早くかつ正確に行なってください」と参加者に伝えた . 8 つの各ブロックがあり, それぞれが視覚フィードバック （ none, color, depth, finger, color×depth, color×finger, depth × finger, color × depth × finger ) に対応していた . 各ブロックは各参加者ごとにランダムな順番で実施し, 順 序効果を排除した . 各ブロック内では 3 つのターゲットサ イズ × 2 つのターゲット間の距離 × 2 の合計 12 試行で構成 した . 各試行はランダムな順序で参加者に提示した . 12 個
+
+のターゲットを選択する１試行が終了するごとに無制限の
+#### 休憩時間を設け, 参加者が好きなタイミングで次のタスク に進むように指示した．実験時間は一人当たり約 60 分で
+
+あった．
+#### 各ブロックの終了後に錯触覚, 操作性, 身体性, 空間知覚
+
+の項目からなるカスタムアンケートを用いた調査を実施し
+#### た 1. アンケート項目は 10 項目であり, 7 段階のリッカー トスケール（ 1= 「強く反対」 7= 「強く賛成」）に基づき, 測定した . 4.5 実験デザイン 2x2x2x3x2 の参加者内デザインを使用した．独立変数は, ターゲットの色が変化する疑似触覚の有無 ( color ), ター ゲットを押し込むことができる疑似触覚の有無 ( depth ),
+
+バーチャルハンドの指先形状が変化する疑似触覚の有無
+#### ( finger ), ボタンのサイズ ( W ) （ 1.5cm, 2.5cm, 3.5cm), ターゲット間の平面距離 ( A )(20cm, 40cm), の 5 つであっ
+
+
+⃝c 2024 Information Processing Society of Japan 49
+
+
+-----
+
+表 **1** カタムアンケートの 内 容
+
+Aspect No. Item
+
+Q1 ターゲットに触れているような感覚があった
+錯触覚
+
+Q2 ターゲットが表示されている場所で触れている感があった
+
+Q3 ターゲットを選択したときの心地よさ
+
+
+操作性
+
+
+Q4 ターゲットを選択する際の有用性 - 全般
+
+Q5 I ターゲットを選択する際の有用性 - 精度
+
+Q6 I ターゲットを選択する際の有用性 - 速度
+
+
+Q7 ターゲットに触れている間バーチャルハンドは自分の手であるように感じられた
+身体性
+
+Q8 I ターゲットに触れている間バーチャルハンドをまるで自分の手のようにコントロールすることができた
+
+
+Q9 ターゲットと手の距離感が分かりやすかった
+空間知覚
+
+Q10 ターゲットに接触するタイミングがよく分かった
+
+#### た．従属変数は, 選択のエラー, 移動時間 (seconds, s), 反 応時間 (seconds, s) とした．選択のエラーは, 選択すべき ターゲット ( 青色 ) 以外のターゲットに触れた場合にエラー として記録した . 移動時間は, ターゲットが選択された瞬
+
+間から次のターゲットが選択されるまでに必要な時間であ
+#### る . 反応時間は, 選択されたターゲットとの接触している 時間である . 各ブロックにおいて, 移動時間は 11 回, 反応 時間は 12 回の試行を記録した．参加者 1 人あたりの総試 行回数は 1152 回（ 2x2x2x3x2x2x12 ）であり, すべての参 加者を合わせると, 合計 23040 回の試行を記録した．
+## 5. 結果と議論
+
+本実験で測定しタスクにおけるパフォーマンスとカスタ
+
+ムアンケートの結果を示す．統計分析では独立変数の主効
+#### 果と各疑似触覚ごとの差を検証するために RM-ANOVA を使用した . 手順として Shapiro-Wilk 検定を使用し, 正規 性を検討したのち Mauchly の球面性検定にて等分散性の 確認を実施した . 球面性を満たさない場合は, Greenhouse- Geisser を使用して p 値を補正し, 事後検定では Bonferroni の多重比較を使用した . カスタムアンケートのデータは非 パラメトリックデータであるが RM-ANOVA を使用した . 理由として, RM-ANOVA は非パラメトリック検定と比較 して統計的検出力が高く, 正規性の違反に対しても堅牢で あるためである [10]. 以下分析の結果を記載するが, W, A, W × A はポインティ ングタスクにおいてすべての項目で有意な効果が見られた . 5.1 エラー率 実験から得た 23040 試行のうち 2521 試行分のエ ラーを記録した ( ER = 10 . 9% ). 各疑似触覚において depth ( F 1, 19 = 15 . 228, p = . 001, η p [2] [=] [ .] [432] [)] [ において有] 意な主効果を示した . 交互効果は finger × W ( F 2, 38 = 6 . 257, p = . 005, η p [2] [=] [ .] [238] [),] [ finger][ ×][ A] [(] [F] [1] [,] [19] [= 4] [.] [395] [, p] [ =] . 004, η p [2] [=] [ .] [180] [),] [ depth][ ×][ A] [(] [F] [1] [,] [19] [= 7] [.] [012] [, p] [ =] [ .] [015] [, η] p [2] [=] . 260 ), depth × W ( F 2, 38 = 14 . 061, p < . 001, η p [2] [=] [ .] [413] [),]
+
+
+図 **3** 各疑似触覚別のポインティングタスクにおける *ER* の結果 . 棒
+
+グラフのラベルは平均値を示す .
+#### finger × color × A ( F 1, 19 = 12 . 719, p = . 002, η p [2] [=] [ .] [389] [),] depth × W × A ( F 2, 38 ) = 3 . 790, p = . 036, η p [2] [=] [ .] [166] [),] finger × color × depth × W ( F 2, 38 = 6 . 756, p = . 004, η p [2] [=] . 252 ) に有意な効果を示した . 各疑似触覚別のエラー率 ( ER ) の結果を図 3 に示す . 各条件間での有意な差はなかっ た . この結果は depth が ER を減少させることを示す . depth が ER を減少させる理由として, 押し込み動作があ
+
+ることによりターゲットに接触した後の現実の手とバー
+
+チャルハンドの手の位置のずれが減少することによる操作
+#### 性が向上が可能性としてある . 一方で各疑似触覚間の有意 な差はないことと W と A にも主効果があることからタス クの難易度による影響が大きい可能性がある . 5.2 移動時間 実験から得た 23040 試行のうち 2521 試行分のエラー を除いた 20519 試行をもとにターゲットの移動時間 ( MT ) の分析を実施した . 分析の結果, color ( F 1, 19 = 5 . 579, p = . 029, η p [2] [=] [ .] [227] [),] [ depth] [(] [F] [1] [,] [19] [= 19] [.] [785] [, p <] . 001, η p [2] [=] [ .] [510] [)] [ において有意な主効果を示した] [.] [ 有意な] 交互作用が見られたのは color × depth ( F 1, 19 = 8 . 390, p = . 009, η p [2] [=] [ .] [306] [),] [ depth] [×] [W] [(] [F] [2] [,] [38] [= 44] [.] [587] [, p < .] [001] [, η] p [2] [=] . 701 ), depth × A ( F 1, 19 = 29 . 034, p < . 001, η p [2] [=] [ .] [604] [),] color × depth × W ( F 2, 38 = 4 . 584, p = . 027, η p [2] [=] [ .] [194] [),]
+
+
+⃝c 2024 Information Processing Society of Japan 50
+
+
+-----
+
+図 **4** 各疑似触覚別のポインティングタスクにおける *MT* の結果 . 棒
+
+グラフのラベルは平均値を示す . 統計的に有意な差は ( *p < .* 05 )
+
+(*), ( *p < .* 01 ) (**), ( *p < .* 001 ) (***) で示す .
+#### color × depth × A ( F 1, 19 = 17 . 309, p = . 001, η p [2] [=] [ .] [477] [)] であった . 各疑似触覚別の MT の結果を図 4 に示 す . 各疑似触覚条件間では none − color ( p = . 044 ), color − depth ( p = . 033 ), color − finger × depth ( p < . 001 ), color − color × depth ( p = . 034 ), color − all ( p = . 005 ) に 有意な差を示した . この結果は各疑似触覚効果に関しては color が MT を有意に短くする一方 depth が MT を有意 に長くすることを示している . color × depth は両者逆の効 果を示した条件の組み合わせだが, ほかの条件と比べて平
+
+均時間が長いことを考えると疑似触覚の複合条件において
+
+各視覚フィードバックごとの影響度に差がある可能性があ
+#### る . これは Park らの 10 キーベースでの疑似触覚を用いた パフォーマンス評価を肯定するものである [25]. さらに詳
+
+しい分析を行うために選択動作内のターゲットとの接触時
+#### 間の分析を実施した . 5.3 接触時間 実験から得た 21120 試行のうち 2521 試行分のエラーを除 いた 18599 試行をもとにターゲットと指先の接触時間 ( RT ) の分析を実施した . 分析の結果, finger ( F 1, 19 = 6 . 844, p = . 017, η p [2] [=] [ .] [265] [),] [ depth] [(] [F] [1] [,] [19] [= 33] [.] [830] [, p < .] [001] [, η] p [2] [=] . 640 ) において有意な主効果が示した . 有意な交互作用が 見られたのは depth × W ( F 2, 38 = 19 . 461, p < . 001, η p [2] [=] . 506 ), depth × A ( F 1, 19 = 6 . 923, p = . 016, η p [2] [=] [ .] [267] [)] [ で] あった . 各疑似触覚別の RT の結果を図 5 に示す . 各 条件ごとの有意な差が多いため, ( p < . 01 ) よりも p 値 の値が大きい場合は図に記載していない . 条件間の有 意差は分析の結果以下のように示された . none との比 較において depth ( p = . 01 ), finger × color ( p < . 001 ), color × depth ( p = . 017 ) が有意な差を示した . finger との 比較においては depth ( p = . 018 ), finger×depth ( p < . 001 ), all ( p = . 016 ) が有意な差を示した . color との比較に おいては depth ( p = . 007 ), finger × depth ( p = . 001 ),
+
+
+図 **5** 各疑似触覚別のポインティングタスクにおける *RT* の結果 . 棒
+
+グラフのラベルは平均値を示す . 統計的に有意な差は ( *p < .* 01 )
+
+よりも *p* 値が小さい場合のみプロットした .
+#### color × depth ( p = . 039 ), all ( p = . 003 ) が有意な差を示し た . その他の有意な差を示した条件として depth−finger × color ( p = . 018 ), finger×color−finger×depth ( p = . 002 ), finger × color − all ( p = . 017 ) があった . color には, 有意 な主効果が見られなかったものの, 各疑似触覚条件内で最 も RT が短く, 各条件の比較において一部有意な差がある ことから, color が含まれる疑似氏触覚条件の MT を減少
+
+させた要因がターゲットとの接触時間であることを示唆し
+#### ている . MT を増加させた depth では RT においても有意
+
+な主効果と各条件の比較において有意な差があることから
+#### ターゲットとの接触時間の増加が MT に影響しているこ とが示された . depth が MT, RT にかかる時間を増加させ
+
+る理由として奥側方向にターゲットを押し込めることで運
+#### 動量が増えていることが推測できる . そのため, ターゲッ
+
+トの選択自体は触れた瞬間に離すことでも接触判定になる
+#### が多くの参加者が押し込める最大値 (2cm) まで移動してい た可能性がある . 5.4 フィッツの法則 移動時間 ( MT ) の各疑似触覚別傾向を総合的に分析する ため Fitts の法則のモデルの適合性を検証した ( 式 1). こ こでは a が切片, b が傾き, MT が移動時間, ID が難易度 指数である . このモデルが適用できれば, MT をタスクの 難易度 ID と関連付けて議論することができる . 実験の結 果, Fitts の法則モデルは各疑似触覚において, 高いモデル 適合度を持つことをが示された ( 図 6, 表 2). タスク難易度 が低いと各疑似触覚での MT の差が少ない . 一方で難易 度が上がるにつれ finger, color, finger × color では MT が短縮された . また, b も finger, color, finger × color の 条件が小さく, 指先形状の変化と色の変化がタスクの難易 度による MT の増加を抑制していることが示された . つま り, Fitts の法則のモデルからは本実験で使用した疑似触覚
+
+条件の中で指先形状の変化と色の変化の効果がタスクの難
+
+
+⃝c 2024 Information Processing Society of Japan 51
+
+
+-----
+
+図 **6** 各疑似触覚別の *ID* 対移動時間の線形回帰 . 各条件において高
+
+い水準で線形回帰し, *ID* が高くなるにつれ *MT* が大きくな
+
+る傾向を示した .
+
+表 **2** 各疑似触覚ごとの Fitts モデル適合の際の切片 ( *a* ), 傾き ( *b* )
+
+|定係数(R2).|Col2|
+|---|---|
+|疑似触覚|a b R2|
+|none finger color depth finger color × finger depth × color depth × all|.368 .211 .934 .400 .187 .942 .442 .151 .936 .239 .241 .951 .514 .141 .937 .286 .245 .969 .064 .295 .921 .169 .272 .960|
+
+#### 易度が高いほど顕著であると考えられる . 5.5 カスタムアンケート 各質問ごとに分析を実施した . 正規性検定の結果, データ セットが正規分布でないことが示された ( p < . 05 ).10 項目 の測定結果を図 7 に示す . 類似の効果を示す項目をまとめ て記載する . Q1, 2 ではターゲットとの接触時の錯触覚に関する質問 を実施した . 結果として finger (Q1= F 1, 19 = 1 . 400, p = . 004, η p [2] = . 354, Q2= F 1, 19 = 5 . 847, p = . 043, η p [2] = . 183 ), depth (Q1= F 1, 19 = 755 . 033, p < . 001, η p [2] [=] [ .] [743] [,] Q2= F 1, 19 = 22 . 994, p < . 001, η p [2] [=] [ .] [548] [)] [ に有意な主効] 果を示した . 交互効果では finger × depth (Q1= F 1, 19 = 6 . 742, p = . 018, η p [2] = . 262, Q2= F 1, 19 = 7 . 216, p = . 015, η p [2] [=] [ .] [275] [),] [ color][ ×][ depth] [(Q1=] [F] [1] [,] [19] [= 6] [.] [742] [, p] [ =] . 018, η p [2] [=] [ .] [262] [, Q2=] [F] [1] [,] [19] [= 7] [.] [437] [, p] [ =] [ .] [013] [, η] p [2] [=] [ .] [281] [)] [ に] 両質問で有意な効果を示し, Q2 のみ finger ×color ×depth でも有意な交互作用を示した . Q1 の各疑似触覚間 の比較では none との比較において finger ( p = . 23 ), depth ( p = . 02 ), finger × color ( p = . 009 ), all ( p = . 009 ), また color との比較において finger × depth ( p = . 009 ), color × depth ( p = . 007 ) に有意な差を示した . Q2 の各疑似 触覚間の比較では none との比較において finger ( p = . 0047 ), depth ( p < . 001 ), finger × color ( p = . 021 ), finger × depth ( p = . 004 ), color × depth ( p = . 006 ),
+
+#### all ( p = . 011 ) に有意な差を示した . この結果より finger と dform の単一・複合提示を用いることで強力な擬似触覚 フィーバックをユーザに提示できることが示された . また, 疑似触覚の複合提示においては all は Q2 のみであるがそ の他の条件では有意な主効果を示し, Q1 では color との比 較において color × depth が有意な差を示していることか
+
+ら疑似触覚を組み合わせることでユーザが感じる錯覚的な
+#### フィードバックの強化は color に関しては示すことができ, その他の条件でも強化される傾向を示すことができた . し かし, all とその他の複合提示条件に差があまりないため,
+
+ある一定の視覚情報を超えるとフィードバックの強化が発
+#### 生しない可能性がある . Q3 ではターゲットとの接触時の心地よさに関する質 問を実施した . 結果として finger ( F 1, 19 = 6 . 731, p = . 018, η p [2] [=] [ .] [262] [),] [ depth] [(] [F] [1] [,] [19] [= 5] [.] [847] [, p < .] [001] [, η] p [2] [=] [ .] [750] [)] に有意な主効果を示した . 交互作用では finger × depth ( F 1, 19 = 8 . 264, p = . 01, η p [2] = . 303 ), color × depth ( F 1, 19 = 33 . 129, p < . 001, η p [2] [=] [ .] [636] [)] [ に有意な効] 果を示した . 各疑似触覚間の比較では none との比較にお いては全ての条件で有意な差を示した ( finger ( p = . 029 ), color ( p = . 018 ), depth ( p < . 001 ), finger × color ( p = . 001 ), finger ×depth ( p = . 0018 ), color ×depth ( p < . 001 ), all ( p < . 001 )). また, 以下の組み合わせでも有意な差を示し た ( finger − finger × depth ( p < . 001 ), color − depth ( p = . 002 ), color − finger × depth ( p = . 0012 )). この結果によ り, color × depth を除く depth が関係する擬似触覚提示手 法が選択動作における操作感を向上させることが示された . これは Kim らの調査を増強するものであり, パフォーマン スが重要視されない 3DUI デザインを行うにあたって有益 な知見となりうる [16]. Q4, 5, 6 ではターゲット選択の有用性に関する質問を実 施した . 結果として 3 つの項目とも有意な主効果が確認でき たのは finger (Q4=( F 1, 19 = 13 . 038, p = . 002, η p [2] [=] [ .] [407] [),] Q5=( F 1, 19 = 9 . 708, p = . 006, η p [2] [=] [ .] [338] [), Q6=(] [F] [1] [,] [19] [=] 9 . 622, p = . 006, η p [2] [=] [ .] [336] [))] [ であった] [.] 項目ごとの有意 な主効果は Q4 では depth ( F 1, 19 = 19 . 991, p < . 001, η p [2] [=] . 513 ), Q5 では color ( F 1, 19 = 15 . 832, p = . 001 η p [2] [=] [ .] [455] [),] depth ( F 1, 19 = 9 . 515, p = . 006, η p [2] [=] [ .] [334] [)] [ の条件に確認で] きた . 交互作用は color × depth (Q4=( F 1, 19 = 14 . 363, p = . 001, η p [2] [=] [ .] [431] [), Q5=(] [F] [1] [,] [19] [= 11] [.] [826] [, p] [ =] [ .] [003] [, η] p [2] [=] . 384 ), Q6=( F 1, 19 = 16 . 139, p = . 001, η p [2] [=] [ .] [459] [))] [ にお] いて 3 つの質問項目全てに有意な主効果が確認でき た . 質問項目ごとの疑似触覚間の比較として Q4 は none との比較で color 以外の項目は有意な差を示した ( finger, depth, finger × color, finger × depth ( p < . 001 ), color × depth ( p = . 016 ), all ( p = . 002 )). Q5 では none との比較で全ての疑似触覚間で有意な差を示した ( p < . 001 ). Q6 では none − finger × color ( p = . 024 ),
+
+
+⃝c 2024 Information Processing Society of Japan 52
+
+
+-----
+
+図 **7** カスタムアンケートの項目別の結果 .
+
+#### finger × color − color × depth ( p = . 002 ) の疑似触覚間で有 意さを示した . 全ての質問項目で finger と color × depth に有意な主効果があり, 各疑似触覚間の比較からも相互作 用の条件も含めると高いスコアを記録した . Q7, 8 では身体所有感に関する質問を実施した . 結果と して有意な主効果は確認できず, 各疑似触覚間の有意な差 もないことを示した . これは, finger による指先形状の変
+
+化やターゲットに接触した際の現実の手の位置とバーチャ
+
+ルハンドの手の位置のずれから身体所有感が低下する可能
+#### 性があったが, 上記の結果により棄却された . Q9, 10 では空間知覚に関する質問を実施した . 結果 として finger (Q9=( F 1, 19 = 4 . 897, p = . 042, η p [2] [=] [ .] [187] [),] Q10=( F 1, 19 = 13 . 225, p = . 024, η p [2] [=] [ .] [242] [))] [ に有意な主] 効果を示し, Q10 のみ color ( F 1, 19 = 2 . 339, p < . 001 η p [2] [=] . 517 ), depth ( F 1, 19 = 13 . 837, p = . 001, η p [2] [=] [ .] [421] [)] [ にも有意] な趣向化を示した . 交互効果においては Q9, 10 両方におい て color × depth (Q9=( F 1, 19 = 6 . 825, p = . 017, η p [2] [=] [ .] [264] [),]
+
+#### Q10=( F 1, 19 = 14 . 519, p = . 001, η p [2] [=] [ .] [433] [))] [ に有意な効] 果を示した . また, Q10 にのみ color ( F 1, 19 = 2 . 339, p < . 001 η p [2] [=] [ .] [517] [),] [ depth] [(] [F] [1] [,] [19] [= 13] [.] [837] [, p] [ =] [ .] [001] [, η] p [2] [=] . 421 ), finger × depth ( F 1, 19 = 6 . 284, p = . 021, η p [2] [=] [ .] [249] [),] all ( F 1, 19 = 12 . 242, p = . 002, η p [2] [=] [ .] [392] [)] [ に有意な交互作用] を示した . 各疑似触覚間の比較では Q9 は none との比較で finger ( p = . 039 ), depth ( p = . 004 ) に有意な差を示し, Q10 では none との比較で全ての条件で有意な差 ( p < . 001 ) を 示した . finger が両方の項目に有意な影響を与えているこ
+
+とから空間知覚においてはユーザの仮想身体の変化が重要
+#### な役割を果たしている可能性がある . 5.6 結果全体を通した議論 本研究の結果として, パフォーマンスの面では color が移 動時間を向上させることを示し, 一方で depth は移動時間
+
+の低下を引き起こすが精度を向上させることが示された．
+#### これは RQ1 に対応する知見である . フィッツの法則を用
+
+
+⃝c 2024 Information Processing Society of Japan 53
+
+
+-----
+
+いた分析ではすべての疑似触覚条件において高いモデル適
+#### 合を示した . 分析結果の内容として, タスクの難易度が低 いと各条件の移動時間の差が少ないが, 難易度が上がるに つれて finger, color, finger × color の条件が移動時間の 増加を抑制する傾向を示した . これは RQ2 に対する明確 な回答を提供している . カスタムアンケートを用いた主観 的評価では錯触覚, 操作性, 空間知覚の項目すべてにおいて finger の条件がて高いスコアを示した . また, 錯触覚の項 目では finger × depth, color × depth の条件で有意な交互
+
+効果と各条件間の比較から複数の種類の異なる視覚フィー
+
+ドバックを組み合わせたは疑似触覚を強化する可能性があ
+#### ることを示唆した . これは RQ3 と RQ4 に対する包括的な 回答を提供している . これらの結果を統合すると, 本実験
+
+で使用した各疑似触覚条件は独自の特性を持つことが明ら
+#### かとなった . この知見は 3D 空間の UI デザインにおいて 重要である . 特に, パフォーマンスや UX など, コンテンツ によって要求される要素が異なる場合に, 適切な疑似触覚 フィードバックを選択・組み合わせることで, より効果的
+
+で没入感のあるインタラクションを設計できる可能性を示
+#### 唆している . 5.7 展望
+
+指先形状が変化する条件と色の変化と押し込みの変化を
+#### 組み合わせた条件はターゲットとの距離知覚を向上させた . これは VR における奥行き知覚か困難な問題 [2] を軽減す ることができる可能性がある . そのため, ユーザからみて
+
+各ターゲットごとの奥行き距離が異なるポインティングタ
+#### スクにおける調査は意味がある . また, 各擬似触覚ごとに評価が高い項目にズレがあった ことから親和性の高い VR コンテンツにも差がある可能性 がある . この仮説を検証するために, VR コンテンツによく 使用されるエンタメ, 医療, 産業分野などのコンテンツ [31] を用いてケーススタディなどを実施することが必要となる .
+## 6. おわりに
+#### 本研究では, フィッツの法則のポインティングタスクに おける 3 種類の視覚的フィードバック ( 指先の変形, 色変 化, 押し込み ) を組み合わせた擬似触覚フィードバックの 効果を検証した . 実験の結果, 色変化を用いた疑似触覚が 操作時間の低減に効果的であり, 押し込みフィードバック は操作時間を増加させることに効果的な一方, エラー率の 低減に効果的であることを明らかにした . またパフォーマ ンスにおいてフィッツの法則を用いた分析を行い, すべて の疑似触覚条件で高いモデル適合率を示した . 錯触覚, 有 用性, 身体性, 空間知覚における主観評価では身体性を除
+
+くすべての項目で指先の変形がポジティブな効果を発揮し
+#### た . これらの知見は, 3D 空間における UI デザインにおい て, 適切な視覚的フィードバックの組み合わせが重要であ
+
+#### ることを示唆している . 最後に疑似触覚は, システム面か らの介入のため様々な VR アプリケーションの UI に簡単
+
+に展開が可能であることと，ハンドトラッキングでのイン
+
+タラクションへの汎用性が高いことからこれからのコンテ
+#### ンツに左右れずに 3D 空間の UI デザインに幅広く活用さ
+
+れることが期待できる．
+
+参考文献
+
+[1] : ISO Central Secretary. Ergonomics of human ―
+system interaction – Part 400: Principles and requirements for physical input devices. ， *Standard ISO*,
+Vol. 9241, p. 400 (2007).
+
+[2] Altenhoff, B. M., Napieralski, P. E., Long, L. O.,
+Bertrand, J. W., Pagano, C. C., Babu, S. V. and
+Davis, T. A.: Effects of calibration to visual and haptic feedback on near-field depth perception in an immersive virtual environment, *Proceedings of the ACM*
+*Symposium on Applied Perception*, SAP ’12, New
+York, NY, USA, Association for Computing Machinery, pp. 71–78 (2012).
+
+[3] Arafsha, F., Zhang, L., Dong, H. and El Saddik, A.:
+Contactless haptic feedback: state of the art, *2015*
+*IEEE International Symposium on Haptic, Audio and*
+*Visual Environments and Games (HAVE)*, IEEE, pp.
+1–6 (2015).
+
+[4] Argelaguet, F., Jáuregui, D. A. G., Marchal, M. and
+Lécuyer, A.: Elastic Images: Perceiving Local Elasticity of Images through a Novel Pseudo-Haptic Deformation Effect, *ACM Trans. Appl. Percept.*, Vol. 10,
+No. 3 (online), DOI: 10.1145/2501599 (2013).
+
+[5] Argelaguet, F., Jáuregui, D. A. G., Marchal, M. and
+Lécuyer, A.: Elastic images: Perceiving local elasticity
+of images through a novel pseudo-haptic deformation
+effect, *ACM Trans. Appl. Percept.*, Vol. 10, No. 3, pp.
+1–14 (2013).
+
+[6] Ban, Y., Kajinami, T., Narumi, T., Tanikawa, T. and
+Hirose, M.: Modifying an identified curved surface
+shape using pseudo-haptic effect, *2012 IEEE Haptics*
+*Symposium (HAPTICS)*, pp. 211–216 (online), DOI:
+10.1109/HAPTIC.2012.6183793 (2012).
+
+[7] Ban, Y., Narumi, T., Tanikawa, T. and Hirose, M.:
+Displaying Shapes with Various Types of Surfaces
+Using Visuo-Haptic Interaction, *Proceedings of the*
+*20th ACM Symposium on Virtual Reality Software and*
+*Technology*, VRST ’14, New York, NY, USA, Association for Computing Machinery, p. 191–196 (online),
+DOI: 10.1145/2671015.2671028 (2014).
+
+[8] Benko, H., Wilson, A. D. and Baudisch, P.: Precise
+selection techniques for multi-touch screens, *Proceed-*
+*ings of the SIGCHI Conference on Human Factors in*
+*Computing Systems*, CHI ’06, New York, NY, USA,
+Association for Computing Machinery, pp. 1263–1272
+(2006).
+
+[9] Bergström, J., Mottelson, A. and Knibbe, J.: Resized grasping in VR: Estimating thresholds for object
+discrimination, *Proceedings of the 32nd Annual ACM*
+*Symposium on User Interface Software and Technol-*
+*ogy*, New York, NY, USA, ACM (2019).
+
+[10] Blanca Mena, M. J., Alarcón Postigo, R. and others:
+Non-normal data: Is ANOVA still a valid option?
+
+[11] Bouzbib, Pacchierotti and Lécuyer: When Tangibles
+Become Deformable: Studying Pseudo-Stiffness Per
+
+⃝c 2024 Information Processing Society of Japan 54
+
+
+-----
+
+ceptual Thresholds in a VR Grasping Task, *IEEE*
+*Trans. Vis. Comput. Graph.*, Vol. 29, pp. 2743–2752
+(2023).
+
+[12] Brickler, D., Teather, R. J., Duchowski, A. T. and
+Babu, S. V.: A Fitts ’ Law Evaluation of Visuo-haptic
+Fidelity and Sensory Mismatch on User Performance
+in a Near-field Disc Transfer Task in Virtual Reality ，
+*ACM Trans. Appl. Percept.*, Vol. 17, No. 4, pp. 1–20
+(2020).
+
+[13] Dudley, J., Benko, H., Wigdor, D. and Kristensson,
+P. O.: Performance Envelopes of Virtual Keyboard
+Text Input Strategies in Virtual Reality, *2019 IEEE*
+*International Symposium on Mixed and Augmented*
+*Reality (ISMAR)*, IEEE, pp. 289–300 (2019).
+
+[14] Fitts, P. M.: The information capacity of the human
+motor system in controlling the amplitude of movement, *J. Exp. Psychol.*, Vol. 47, No. 6, pp. 381–391
+(1954).
+
+[15] Hinckley, K., Pausch, R., Goble, J. C. and Kassell,
+N. F.: A survey of design issues in spatial input,
+*Proceedings of the 7th annual ACM symposium on*
+*User interface software and technology*, UIST ’94, New
+York, NY, USA, Association for Computing Machinery, pp. 213–222 (1994).
+
+[16] Kim, W. and Xiong, S.: Pseudo-haptic button for
+improving user experience of mid-air interaction in
+VR, *Int. J. Hum. Comput. Stud.*, Vol. 168, p. 102907
+(2022).
+
+[17] Kim, W. and Xiong, S.: Pseudo-haptics and selfhaptics for freehand mid-air text entry in VR, *Appl.*
+*Ergon.*, Vol. 104, p. 103819 (2022).
+
+[18] Kourtesis, P., Vizcay, S., Marchal, M., Pacchierotti,
+C. and Argelaguet, F.: Action-Specific Perception &
+Performance on a Fitts’s Law Task in Virtual Reality:
+The Role of Haptic Feedback, *IEEE Trans. Vis. Com-*
+*put. Graph.*, Vol. 28, No. 11, pp. 3715–3726 (2022).
+
+[19] Lecuyer, A., Coquillart, S., Kheddar, A., Richard, P.
+and Coiffet, P.: Pseudo-haptic feedback: can isometric input devices simulate force feedback?, *Proceed-*
+*ings IEEE Virtual Reality 2000 (Cat. No.00CB37048)*,
+IEEE, pp. 83–90 (2000).
+
+[20] Lecuyer, A., Coquillart, S., Kheddar, A., Richard, P.
+and Coiffet, P.: Pseudo-haptic feedback: can isometric input devices simulate force feedback?, *Proceedings*
+*IEEE Virtual Reality 2000 (Cat. No.00CB37048)*, pp.
+83–90 (online), DOI: 10.1109/VR.2000.840369 (2000).
+
+[21] MacKenzie, I. S.: Fitts’ law as a research and design
+tool in human-computer interaction, *Hum.-Comput.*
+*Interact.*, Vol. 7, No. 1, pp. 91–139 (1992).
+
+[22] Mizuhara, R., Takahashi, A. and Kajimoto, H.:
+Combination of Mechanical and Electrical Stimula
+tion for an Intense and Realistic Tactile Sensation,
+*Proceedings of the 17th International Conference on*
+*Virtual-Reality Continuum and Its Applications in*
+*Industry*, VRCAI ’19, New York, NY, USA, Association for Computing Machinery, (online), DOI:
+10.1145/3359997.3365714 (2019).
+
+[23] Morimoto, K., Hashiura, K. and Watanabe, K.: Effect
+of Virtual Hand’s Fingertip Deformation on the Stiffness Perceived Using Pseudo-Haptics, *Proceedings of*
+*the 29th ACM Symposium on Virtual Reality Software*
+*and Technology*, VRST ’23, No. Article 32, New York,
+NY, USA, Association for Computing Machinery, pp.
+1–10 (2023).
+
+[24] Narumi, T., Ujitoko, Y., Ban, Y., Tanikawa, T., Hi
+
+rota, K. and Hirose, M.: Resistive swipe: Visuo-haptic
+interaction during swipe gestures to scroll background
+images on touch interfaces, *2017 IEEE World Hap-*
+*tics Conference (WHC)*, pp. 334–339 (online), DOI:
+10.1109/WHC.2017.7989924 (2017).
+
+[25] Park, K., Kim, D. and Han, S. H.: Usability of the
+size, spacing, and operation method of virtual buttons with virtual hand on head-mounted displays, *Int.*
+*J. Ind. Ergon.*, Vol. 76, No. 102939, p. 102939 (2020).
+
+[26] Rietzler, M., Geiselhart, F., Gugenheimer, J. and
+Rukzio, E.: Breaking the Tracking: Enabling Weight
+Perception Using Perceivable Tracking Offsets, *Pro-*
+*ceedings of the 2018 CHI Conference on Human Fac-*
+*tors in Computing Systems*, CHI ’18, New York, NY,
+USA, Association for Computing Machinery, p. 1–12
+(online), DOI: 10.1145/3173574.3173702 (2018).
+
+[27] Samad, M., Gatti, E., Hermes, A., Benko, H. and
+Parise, C.: Pseudo-Haptic Weight: Changing the
+Perceived Weight of Virtual Objects By Manipulating Control-Display Ratio, *Proceedings of the 2019*
+*CHI Conference on Human Factors in Computing*
+*Systems*, CHI ’19, New York, NY, USA, Association for Computing Machinery, p. 1–13 (online), DOI:
+10.1145/3290605.3300550 (2019).
+
+[28] Schwind, V., Leusmann, J. and Henze, N.: Understanding Visual-Haptic Integration of Avatar Hands
+Using a Fitts’ Law Task in Virtual Reality, *Proceed-*
+*ings of Mensch und Computer 2019*, MuC ’19, New
+York, NY, USA, Association for Computing Machinery, pp. 211–222 (2019).
+
+[29] Speicher, M., Ehrlich, J., Gentile, V., Degraen, D.,
+Sorce, S. and Krüger, A.: Pseudo-haptic Controls for
+Mid-air Finger-based Menu Interaction, *Extended Ab-*
+*stracts of the 2019 CHI Conference on Human Fac-*
+*tors in Computing Systems*, CHI EA ’19, No. Paper
+LBW0285, New York, NY, USA, Association for Computing Machinery, pp. 1–6 (2019).
+
+[30] Teng, S.-Y., Li, P., Nith, R., Fonseca, J. and Lopes,
+P.: TouchFold: A Foldable Haptic Actuator for Rendering Touch in Mixed Reality, *Proceedings of the*
+*2021 CHI Conference on Human Factors in Com-*
+*puting Systems*, CHI ’21, New York, NY, USA, Association for Computing Machinery, (online), DOI:
+10.1145/3411764.3445099 (2021).
+
+[31] Ujitoko, Y. and Ban, Y.: Survey of pseudo-haptics:
+Haptic feedback design and application proposals,
+*IEEE Trans. Haptics*, Vol. 14, No. 4, pp. 699–711
+(2021).
+
+[32] Weiss, Y., Villa, S., Schmidt, A., Mayer, S. and
+Müller, F.: Using Pseudo-Stiffness to Enrich the Haptic Experience in Virtual Reality, *Proceedings of the*
+*2023 CHI Conference on Human Factors in Com-*
+*puting Systems*, CHI ’23, New York, NY, USA, Association for Computing Machinery, (online), DOI:
+10.1145/3544548.3581223 (2023).
+
+[33] Yabe, S.-I., Kishino, H., Kimura, T. and Nojima,
+T.: Pseudo-haptic feedback on softness induced by
+squeezing action, *2017 IEEE World Haptics Confer-*
+*ence (WHC)*, ieeexplore.ieee.org, pp. 557–562 (2017).
+
+[34] Zhao, X., Niikura, T. and Komuro, T.: Evaluation of
+Visuo-haptic Feedback in a 3D Touch Panel Interface,
+*Proceedings of the Ninth ACM International Confer-*
+*ence on Interactive Tabletops and Surfaces*, ITS ’14,
+New York, NY, USA, Association for Computing Machinery, pp. 299–304 (2014).
+
+
+⃝c 2024 Information Processing Society of Japan 55
+
+
+-----
+
