@@ -2,7 +2,7 @@ import fugashi
 
 # タグ付け器（unidic-lite に基づく）
 tagger = fugashi.Tagger()
-EXCLUDE_SURFACE = {"し", "する", "いる", "よう", "なる", "ある", "てる", "した", "して", "された", "られる"}
+EXCLUDE_SURFACE = {"さ", "し", "する", "いる", "よう", "なる", "ある", "てる", "した", "して", "された", "られる", "できる", "こと", "もの", "いく"}
 
 def extract_meaningful_chunks(text):
     tagger = fugashi.Tagger()
