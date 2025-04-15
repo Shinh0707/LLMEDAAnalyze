@@ -4,13 +4,12 @@ import os
 P = "secrets/.OPENAI_API_KEY"
 with open(P, "r") as f:
     openai.api_key = f.read().strip()
- 
 
-def getEDA(text: str):
+def getEDA(text: str, log_path: str, filename: str):
     instruction = '''
 # Prior Knowledge
-    Entertainment Design Assets (EDA) in content refer to expressions that describe the "emotional responses" intended to be evoked in players, as defined in the content's design requirements.
-    However, EDA here specifically refers to "mechanisms that directly cause changes in the user's own emotional state."
+    Entertainment Design Assets (EDA) in content refer to expressions that describe the "feeling responses" intended to be evoked in players, as defined in the content's design requirements.
+    However, EDA here specifically refers to "mechanisms that directly cause changes in the user's own feeling state."
 
 ## Concrete Examples of EDA Items
     “Link to the real world,” “Narrative experiences,”  
@@ -27,25 +26,26 @@ def getEDA(text: str):
     To determine the presence of EDAs, please assess whether the following "EDA Conditions" are satisfied within the paper's main theme.
 
     “EDA Conditions”:
-    - "The emotional responses targeted in the user are clearly defined as part of the design requirements of the content."
+    - "The feeling responses targeted in the user are clearly defined as part of the design requirements of the content."
         - It is important that they are specifically and unambiguously defined by the developers.
-        - If the emotional experience varies based on user behavior (i.e., the EDA becomes optional), this condition is not satisfied.
-    - "The content aims to deliberately influence the user's own emotional state."
-    - "The paper discusses what kind of emotional response the content is expected to evoke when used."
+        - If the feeling experience varies based on user behavior (i.e., the EDA becomes optional), this condition is not satisfied.
+    - "The content aims to deliberately influence the user's own feeling state."
+    - "The paper discusses what kind of feeling response the content is expected to evoke when used."
 
 # Response Format
     Please answer in the form of a JSON block like the following:
     ```
     {
+        "Targets": string[], // Targets that changes feeling. (No EDA unless “content user” is included here.)
         "Design Targeted EDA Reason": string, // Reason for Design Targeted EDA
-        "Design Targeted EDA": boolean, // Whether the emotional response is clearly specified in the content design requirements
+        "Design Targeted EDA": boolean, // Whether the feeling response is clearly specified in the content design requirements
         "Propose EDA Reason": string, // Reason for Propose EDA
-        "Propose EDA": boolean, // Whether the content aims to influence the user's emotional state
+        "Propose EDA": boolean, // Whether the content aims to influence the user's feeling state
         "Analyze EDA Reason": string, // Reason for Analyze EDA
-        "Analyze EDA": boolean, // Whether the paper discusses the emotional response evoked by using the content
+        "Analyze EDA": boolean, // Whether the paper discusses the feeling response evoked by using the content
         "Clarity Score reason": string, // Reason for the Clarity Score
         "Clarity Score": int, // 4: EDA is a clear main topic, 3: EDA is a main topic but unclear, 2: Not a main topic, 1: No EDA at all
-        "EDA": string[], // Direct quotes from the paper describing the targeted emotional responses (leave empty if none)
+        "EDA": string[], // Direct quotes from the paper describing the targeted feeling responses. Please extract them verbatim in the original language of the paper (do not translate). Leave empty if none.
     }
     ```
     '''
@@ -61,15 +61,35 @@ def getEDA(text: str):
     # print(response.choices[0].message.content)
 
     res = response.choices[0].message.content
-    response = openai.chat.completions.create(
+    if not res:
+        return
+    
+    response_ja = openai.chat.completions.create(
         model="gpt-4o-mini-2024-07-18",
         messages=[
-            {"role": "developer", "content": "このJSONのKeyをそのままで、Key=EDAのValue以外のValueの英語を日本語訳してJSON形式で回答して。"},
+            {
+                "role": "developer",
+                "content": """
+                次のJSONを読み取り、以下のルールに従って翻訳してください：
+                - Keyはすべてそのままにしてください（変更禁止）。
+                - 最後のKey("EDA")の配列内の値は翻訳しないでください。元の言語のまま保持してください。
+                - それ以外の全ての値（文字列,数値）は、日本語に翻訳してください。
+                - JSONの構造を壊さずに、JSON形式で返答してください。
+                """
+            },
             {"role": "user", "content": res}
         ]
     )
 
-    print(response.choices[0].message.content)
+    translated = response_ja.choices[0].message.content
+
+    # ログファイルに書き込み
+    with open(log_path, "a", encoding="utf-8") as logf:
+        logf.write(f"==== {filename} ====\n")
+        logf.write(translated + "\n\n")
+
+    print(translated)
+
 
 def load_cached_texts(cache_dir: str):
     texts = []
@@ -85,15 +105,17 @@ def load_cached_texts(cache_dir: str):
     return texts, filepaths
 
 # キャッシュされたテキストを読み込む
-cache_dir = "PDF/cache/littleEDA"  # ここを実際のディレクトリに置き換えて
+log_file_path = "result/hasEDA2.txt"
+cache_dir = "PDF/cache/hasEDA"  # ここを実際のディレクトリに置き換えて
 texts, paths = load_cached_texts(cache_dir)
 
 # 各テキストに対して EDA 推定を実行
-max_files = min(4,len(paths))
+max_files = min(14,len(paths))
 readed = 0
 for text, path in zip(texts, paths):
-    print(f"===={readed+1}/{max_files} {os.path.basename(path)} ====")
-    getEDA(text)
+    filename = os.path.basename(path)
+    print(f"===={readed+1}/{max_files} {filename} ====")
+    getEDA(text, log_file_path, filename)
     print("\n")
     readed += 1
     if readed >= max_files:
