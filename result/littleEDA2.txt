@@ -1,0 +1,62 @@
+==== IPSJ-EC2024030.txt ====
+{
+  "Targets": ["鑑賞者"],
+  "Design Targeted EDA Reason": "システムは、キャラクターおよび鑑賞者の内面的な感情状態（心の動き）を表すエンベロープを明示的に組み込んでいます。鑑賞者を指定されたターゲットとして含めることで、コンテンツのデザイン要件がユーザー（コンテンツユーザー）の感情状態を影響を受けるように明確に指定しています。",
+  "Design Targeted EDA": true,
+  "Propose EDA Reason": "TaleShaperは、ユーザーが複数の感情パラメータ（例：幸福度、好意、不安、怒り）をエンベロープを介して直接操作できるように設計されています。この操作はストーリー生成プロセスを変更し、インタラクション中にユーザーの感情体験に意図的に影響を与え、形作ることを目的としています。",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "この論文では、エンベロープ値（感情状態を表す）がどのように生成され、操作され、後に物語を再構築するのに使用されるかについて詳しく説明しています。これらのメカニズムを通じて引き起こされる期待される感情反応を明確にする例（例えば、英雄と対抗者の幸福度の変動や、ロマンティックな興味の段階的変化）を提供しています。",
+  "Analyze EDA": true,
+  "Clarity Score reason": "エンベロープを介した感情状態の操作は、システムの中心的で明確に議論された要素です。デザインは特定の感情反応を引き起こすことを意図したパラメータとプロセスを明確に指定しており、EDAはこの論文の明確な主要なトピックとなっています。",
+  "Clarity Score": 4,
+  "EDA": [
+    "エンベロープは鑑賞者及び登場人物の心の動きを表している．",
+    "例えば，自信，他者への好意，不安，怒り，期待などが挙げられる．"
+  ]
+}
+
+==== IPSJ-EC2024003.txt ====
+{
+  "Targets": ["食事者"],
+  "Design Targeted EDA Reason": "本論文は可食レンチキュラレンズを用いた料理の視覚効果やインタラクティブな食体験を提案しているが、具体的な『感情』（例：驚き、喜びなど）の状態が設計要求として明示的かつ一義的に定義されていないため、この点で明確な感情ターゲットは設定されていない。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "視点によって料理の外観が変化する仕組みにより、食事者が自身の見方を変えることで新たな視覚体験や驚きといった感情変化を得ることを意図している。この点から、ユーザの感情状態に働きかけることを狙っている。",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "論文内ではシステムの設計や試作、シミュレーション結果および応用例を詳細に述べているが、具体的にどのような感情（例えば、喜び、驚嘆、興奮など）を引き起こすかについては、定義や議論が十分ではなく、あくまで見た目や体験の変化として記述されている。",
+  "Analyze EDA": false,
+  "Clarity Score reason": "EDAsとしての『感情反応』が設計の中心テーマではなく、技術的な実現手法や視覚効果・体験変化が主題となっているため、感情に関しては曖昧で副次的な位置づけとなっている。",
+  "Clarity Score": 2,
+  "EDA": []
+}
+
+==== IPSJ-EC2024006.txt ====
+{
+  "Targets": ["コンテンツユーザ"],
+  "Design Targeted EDA Reason": "本論文は疑似触覚フィードバックの各手法が提示する視覚的変化（例：指先形状の変化，ターゲットの色変化，押し込み変化）によってユーザに触覚的な錯覚をもたらすことを狙いとしているが、その『感じる状態』として具体的にどの感情や内面的体験を狙うか、あらかじめ明確かつ一義的に設計要求として定義された記述は見受けられない。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "疑似触覚の各効果―たとえばターゲットに接触した際の色変化や指先形状の変化―を意図的に導入することで、ユーザの触覚（錯触覚）の知覚や操作時の体験的側面に影響を与え、操作性や没入感の向上を目指している。",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "実験やカスタムアンケートの結果として、‘ターゲットに触れているような感覚’や‘心地よさ’、または‘錯触覚’等の主観評価項目が用いられ、各疑似触覚条件がユーザの体感にどう影響するかを詳細に議論しているため。",
+  "Analyze EDA": true,
+  "Clarity Score reason": "疑似触覚フィードバックがユーザの体感に及ぼす影響は実験手法として中心に扱われ、評価項目としても複数提示されている。ただし、開発者側がデザイン要求として特定の感情状態を明示的に定めたとは言い難いため、EDAそのものは本研究の主要議論の一部であるが明示性にはやや欠ける。",
+  "Clarity Score": 3,
+  "EDA": [
+    "ターゲットに触れているような感覚",
+    "心地よさ",
+    "錯触覚"
+  ]
+}
+
+==== IPSJ-EC2024005.txt ====
+{
+    "Targets": [],
+    "Design Targeted EDA Reason": "This paper focuses on detailed emotional expression through the customization of emoji parts, but it does not explicitly define emotional responses aimed at directly changing the user's internal emotional state as design requirements. Instead, it focuses primarily on input methods to enrich emoji representations.",
+    "Design Targeted EDA": false,
+    "Propose EDA Reason": "The aim is to provide tools for more accurately conveying the user's emotions, and there is no clear intention or mechanism indicated to directly cause changes in the user's internal emotional state.",
+    "Propose EDA": false,
+    "Analyze EDA Reason": "The experiments and discussions focus on the operability, load, and error rate of each input method, and do not discuss the direct impact on the user's emotional state regarding what specific emotions may be evoked during use.",
+    "Analyze EDA": false,
+    "Clarity Score reason": "This paper emphasizes input methods and their evaluation for emoji customization, and does not treat direct effects on the user's emotional state (EDA) as clear design requirements, thus EDA itself is not the main subject.",
+    "Clarity Score": 1,
+    "EDA": []
+}

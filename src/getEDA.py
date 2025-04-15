@@ -105,18 +105,19 @@ def load_cached_texts(cache_dir: str):
     return texts, filepaths
 
 # キャッシュされたテキストを読み込む
-log_file_path = "result/hasEDA2.txt"
-cache_dir = "PDF/cache/hasEDA"  # ここを実際のディレクトリに置き換えて
+cache_dir = "PDF/cache/noEDA"  # ここを実際のディレクトリに置き換えて
 texts, paths = load_cached_texts(cache_dir)
 
 # 各テキストに対して EDA 推定を実行
-max_files = min(14,len(paths))
-readed = 0
-for text, path in zip(texts, paths):
-    filename = os.path.basename(path)
-    print(f"===={readed+1}/{max_files} {filename} ====")
-    getEDA(text, log_file_path, filename)
-    print("\n")
-    readed += 1
-    if readed >= max_files:
-        break
+for i in range(5):
+    log_file_path = f"result/noEDA{i+1}.txt"
+    max_files = min(99,len(paths))
+    readed = 0
+    for text, path in zip(texts, paths):
+        filename = os.path.basename(path)
+        print(f"===={readed+1}/{max_files} {filename} ====")
+        getEDA(text, log_file_path, filename)
+        print("\n")
+        readed += 1
+        if readed >= max_files:
+            break
