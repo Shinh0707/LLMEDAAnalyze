@@ -1,4 +1,5 @@
 import pandas as pd
+from collections import Counter
 from ward_analyze import extract_common_meaningful_tokens
 
 # CSVファイルの読み込み（ファイル名は適宜変更）
@@ -12,6 +13,24 @@ for col in bool_columns:
 
 # filename 列でグループ化
 grouped = df.groupby("filename")
+
+def count_token_appearance(token_sets):
+    """各トークンが何件の行に登場したかをカウント"""
+    counter = Counter()
+    for token_set in token_sets:
+        for token in set(token_set):  # 重複しないようにset化
+            counter[token] += 1
+    return counter
+
+def extract_common_tokens_over_threshold(token_series, tokenizer, threshold=2):
+    """シリーズからトークンを抽出し、指定数以上に現れたものだけ返す"""
+    token_sets = token_series.dropna().apply(tokenizer).tolist()
+    df_counter = count_token_appearance(token_sets)
+    common_tokens = [token for token, freq in df_counter.items() if freq >= threshold]
+    return sorted(common_tokens)
+
+def tokenize_targets(entry):
+    return entry.split(";") if isinstance(entry, str) else []
 
 # 各グループごとに出力結果の揺らぎ（ばらつき）の集計を実施
 def aggregate_fluctuations(group):
@@ -40,6 +59,10 @@ def aggregate_fluctuations(group):
         result["共通EDA形態素"] = ";".join(common_tokens)
     else:
         result["共通EDA形態素"] = ""
+    
+    if "Targets" in group.columns:
+        common_targets = extract_common_tokens_over_threshold(group["Targets"], tokenize_targets, threshold=2)
+        result["共通Targets語（≥2件）"] = ";".join(common_targets)
     
     return pd.Series(result)
 
