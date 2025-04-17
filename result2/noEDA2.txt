@@ -1,0 +1,59 @@
+==== IPSJ-EC2024020.txt ====
+{
+  "Targets": [],
+  "Design Targeted EDA Reason": "この論文ではデザイン要件として特定の感情反応（例：興奮や一体感など）を明示的に定義していない。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "ゲーム接続の目的は目標意識と身体動作の共有によるコミュニケーション促進であり，ユーザの感情状態を意図的に操作する設計ではない。",
+  "Propose EDA": false,
+  "Analyze EDA Reason": "利用時にどのような感情反応が喚起されるかについての言及や分析がない。",
+  "Analyze EDA": false,
+  "Clarity Score reason": "感情誘発のメカニズムや狙いが論じられておらず，EDAの要素が全く見られない。",
+  "Clarity Score": 1,
+  "EDA": []
+}
+
+==== IPSJ-EC2024026.txt ====
+{
+  "Targets": [],
+  "Design Targeted EDA Reason": "この論文は自動彩色手法による労力削減を目的としており、ユーザーの感情体験を設計要件として明確に定義していないため。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "提案内容は彩色工程の効率化と時間短縮を狙った技術的アプローチであり、ユーザーの感情状態への影響を意図していないため。",
+  "Propose EDA": false,
+  "Analyze EDA Reason": "評価検証や成果の記述において、利用時に引き起こす感情的反応についての言及が一切ないため。",
+  "Analyze EDA": false,
+  "Clarity Score reason": "感情誘発やユーザーの感じ方に関する記述はまったくなく、EDAの要素が存在しない。",
+  "Clarity Score": 1,
+  "EDA": []
+}
+
+==== IPSJ-EC2024018.txt ====
+{
+  "Targets": [],
+  "Design Targeted EDA Reason": "本研究は野球の打撃能力やスポーツビジョン向上を目的としており、ユーザーの感情体験（楽しさや達成感など）を設計要件として明示していないため。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "提案システムの目的は視覚機能と打撃能力のトレーニングであり、ユーザーの感情状態を意図的に操作・誘発することを狙ったものではないため。",
+  "Propose EDA": false,
+  "Analyze EDA Reason": "論文中に意図的に喚起すべき感情を議論する箇所はなく、ユーザーの感想として「楽しい」「気持ちが良い」とのテストプレイ時コメントがあるものの、期待される感情応答について体系的に論じられていないため。",
+  "Analyze EDA": false,
+  "Clarity Score reason": "EDA（感情誘発機構）は研究の主題ではなく、設計要件にも議論にも含まれていない。",
+  "Clarity Score": 1,
+  "EDA": []
+}
+
+==== IPSJ-EC2024004.txt ====
+{
+  "Targets": ["content user"],
+  "Design Targeted EDA Reason": "本稿では「モチベーションの喚起」や「新しい体験の提供」を掲げているが，その感情体験（楽しさや達成感など）が開発要件として具体的かつ明確に定義されてはいない．",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "本デバイス＋ゲームによってユーザの運動モチベーションを喚起し，継続的に楽しませることを意図している．",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "展示評価において，子供を中心に「止めずに回し続ける」「悔しがって再挑戦する」などの行動や，モチベーション向上・楽しさの定性的評価を報告している．",
+  "Analyze EDA": true,
+  "Clarity Score reason": "ユーザモチベーションや楽しさを誘発することは論文全体の主題ではあるが，ターゲットとなる具体的感情があいまいであるため，EDAは主題であるものの不明瞭と言える．",
+  "Clarity Score": 3,
+  "EDA": [
+    "運動を継続的に行う，また正しく効果的に行うには，モチベーションの喚起や，目標の設定，動きの観察と修正を行うことが望ましい．",
+    "より多くの人々に新しい体験や，個々の事情にそった体験を提供でき，また運動のモチベーションとなりうる形態について考えた．"
+  ]
+}
+

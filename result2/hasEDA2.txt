@@ -1,0 +1,247 @@
+==== IPSJ-EC2024037.txt ====
+```json
+{
+  "Targets": ["コンテンツユーザー"],
+  "Design Targeted EDA Reason": "本論文ではゲーム設計要件として，「視聴者全員が『私たち』として達成感や配信者とのつながりを得ることができる」ことを明示的に挙げており，狙う感情体験が具体的かつ明確に定義されているため。",
+  "Design Targeted EDA": true,
+  "Propose EDA Reason": "提案コンテンツは，We‑mode を生起させることでユーザーの「一体感」「達成感」「配信者とのつながり」といった感情状態を意図的に喚起することを主眼に置いているため。",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "実験や評価の章で，「視聴者がどの程度共同主体性（We‑mode）を感じたか」「達成感やつながりを得たか」を測定するアンケート結果を詳細に報告しており，用いた感情レスポンスについて言及しているため。",
+  "Analyze EDA": true,
+  "Clarity Score reason": "We‑mode による一体感や達成感・つながりの共有を引き起こすデザインが論文全体の主題となっており，EDA が明確に扱われている。",
+  "Clarity Score": 4,
+  "EDA": [
+    "視聴者参加型ゲームは，視聴者にゲームクリアによる達成感などのゲーム体験を提供するとともに，視聴者と配信者とのつながりを強めることができるコンテンツとして人気を得ている",
+    "視聴者全員が「私たち」として達成感や配信者とのつながりを得ることができるゲームの実現を目指す",
+    "視聴者が多人数であっても We-mode を生起させ，視聴者全員が「私たち」として達成感や配信者とのつながりを得ることができるゲームの実現を目指す"
+  ]
+}
+```
+
+==== IPSJ-EC2024024.txt ====
+```json
+{
+  "Targets": ["コンテンツユーザー"],
+  "Design Targeted EDA": true,
+  "Design Targeted EDA Reason": "本研究では「緊張や羞恥の軽減」が明確にデザイン要件として定義され，版権キャラクタアバタと標準アバタの差分検証を行うことを目的としているため。",
+  "Propose EDA": true,
+  "Propose EDA Reason": "VRアバタを着用することでユーザの緊張・羞恥という感情状態に積極的に介入・変化をもたらすことを狙ったコンテンツ設計となっているため。",
+  "Analyze EDA": true,
+  "Analyze EDA Reason": "アンケート項目（Q4: 緊張の感じ方，Q5: 羞恥の感じ方）や実験仮説として，アバタ着用時にどの程度緊張・羞恥が軽減されるかを議論しているため。",
+  "Clarity Score": 4,
+  "Clarity Score reason": "緊張や羞恥の軽減をアバタ利用の主目的としており，EDAが研究の中心テーマとして一貫して扱われているため。",
+  "EDA": [
+    "キャラクタへの変身感から緊張や羞恥が軽減されるのではないかという仮説のもと，版権キャラクタのアバタと標準的なアバタとの差を比較検討する．",
+    "VRアバタを着用することで緊張や羞恥が軽減されれば，ダンス中に緊張や羞恥を気にせずに授業に意欲的に取り組むことができる方法の1つとなりえる．"
+  ]
+}
+```
+
+==== IPSJ-EC2024056.txt ====
+```json
+{
+  "Targets": ["鑑賞者", "ユーザー"],
+  "Design Targeted EDA Reason": "本論文では「没入感」や「映えるコンテンツ」を目指すと記載があるが、これらの感情的反応を具体的な設計要件として明確・定量的に定義してはいないため、開発者が曖昧ではなく明示的に感情を規定したとは言えない。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "プロジェクションマッピングによる体の動きへの反応を通じて、鑑賞者にインタラクティブで没入感のある体験を与えることを明示的に狙っており、ユーザーの感情状態への働きかけを意図している。",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "「より没入感のある体験を提供」「映えるコンテンツを目指した」など、利用時にどのような感情（没入感や美的満足）を誘発するかについて言及している。",
+  "Analyze EDA": true,
+  "Clarity Score reason": "感情誘発については触れられているものの、本論文の主題はあくまで技術実装と評価であり、EDAは副次的に扱われている。",
+  "Clarity Score": 2,
+  "EDA": [
+    "鑑賞者の動きに反応する要素を加えることでより没入感のある体験を提供し",
+    "写真を撮ることができるような映えるコンテンツを目指した"
+  ]
+}
+```
+
+==== IPSJ-EC2024109.txt ====
+```json
+{
+  "Targets": ["コンテンツユーザー"],
+  "Design Targeted EDA": true,
+  "Design Targeted EDA Reason": "著者は設計要件の中で、システムがプレイヤーの銃が弾かれる感覚を引き起こす必要があることを明示的に定義している（“銃が弾かれる感覚”）。このターゲット感覚は明確に述べられており、オプションではない。",
+  "Propose EDA": true,
+  "Propose EDA Reason": "VR決闘システムは、ユーザーの手に物理的な感覚を与えるために、銃デバイスの先端から意図的に空気を吹き込んでおり、ユーザー自身の感情状態に影響を与えることを明確に目指している。",
+  "Analyze EDA": false,
+  "Analyze EDA Reason": "論文は弾かれる感覚を提示するメカニズムを説明しているが、ユーザーの実際の感じた反応に関する議論や評価は含まれていない（ユーザースタディや感情/反応の定性的分析はない）。",
+  "Clarity Score": 4,
+  "Clarity Score reason": "銃の弾かれる感覚はシステムデザインの中心的かつ明確に述べられたトピックである。",
+  "EDA": [
+    "本研究では，西部劇やコメディなどで表現される敵の銃弾により自身の持つ銃が弾かれる体験を可能とする VR 決闘システムを開発する．",
+    "手に持つ銃が弾かれる感覚を提示するマンガ物理学的VR体験システムの開発について報告した．"
+  ]
+}
+```
+
+==== IPSJ-EC2024041.txt ====
+```json
+{
+  "Targets": ["content user"],
+  "Design Targeted EDA Reason": "This study clearly defines the sense of 'near-death experience' as a feeling that players should perceive, and it is a design requirement to present that 'near-death experience' through changes in operability.",
+  "Design Targeted EDA": true,
+  "Propose EDA Reason": "By intentionally changing operability according to the health of the control character, it attempts to induce the player's emotional state (near-death experience).",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "In the purpose and discussion of the experiment, it details how changes in operability evoke the player's near-death experience and how that, in turn, affects immersion.",
+  "Analyze EDA": true,
+  "Clarity Score reason": "From the definition of the sensory experience of 'near-death experience' to the evaluation methods, this study is consistently treated as the central theme.",
+  "Clarity Score": 4,
+  "EDA": [
+    "キャラクタが死に近づいていく際にプレイヤが感じる感覚を「瀕死感」と定義する．",
+    "本研究では，その操作キャラクタが死や戦闘不能状態に近づいていく過程で生じる感覚を瀕死感（図 1 ）と定義する．"
+  ]
+}
+```
+
+==== IPSJ-EC2024093.txt ====
+```json
+{
+  "Targets": ["会議参加者"],
+  "Design Targeted EDA Reason": "本研究の設計要件として「緊張感を生じさせずに自発的な発言を促す」「緊張感の少ない、ゆるやかなファシリテーション」を明示的に掲げているため。",
+  "Design Targeted EDA": true,
+  "Propose EDA Reason": "提案システムはロボットの動きによって参加者の心理状態（緊張感の軽減や発話意欲の向上）に働きかけることを目的としているため。",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "シナリオやコンセプトの各節で，ロボット動作によって参加者が感じる「発言しやすさ」「周囲の意識喚起」「プレッシャーの分散」などの感情変化を詳細に議論しているため。",
+  "Analyze EDA": true,
+  "Clarity Score reason": "ロボットを介して参加者の感情（緊張感や発話意欲）を操作・誘導することが論文全体の主題となっており，EDAが明確に扱われている。",
+  "Clarity Score": 4,
+  "EDA": [
+    "緊張感を生じさせずに自発的な発言を促す，ゆるやかなファシリテーションを目指す．",
+    "ロボットが「話して」と指示するのではなく，あたかも話を聞きたくて寄ってくるかのように振る舞い，自発的な発話のきっかけをつくる．",
+    "参加者は「私の意見はね」と自ら発言しやすくなる．"
+  ]
+}
+```
+
+==== IPSJ-EC2024086.txt ====
+{
+  "Targets": ["content user"],
+  "Design Targeted EDA Reason": "論文の目的として「ユーザの継続意欲を向上させる」「モチベーションを高めることを目的としている」と明示的に定義されており，開発者が狙う感情応答が具体的に示されているため。",
+  "Design Targeted EDA": true,
+  "Propose EDA Reason": "システム設計の全体が，生成される激励文を通じてユーザの感情状態（継続意欲やモチベーション）に意図的に働きかけることを狙っているため。",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "定性的評価で「嬉しかった激励文」「不快だった激励文」を尋ね，ユーザの感情変化（励まされた、プレッシャーを感じたなど）を詳細に議論しているため。",
+  "Analyze EDA": true,
+  "Clarity Score reason": "感情変化（継続意欲向上・モチベーション）を設計目標とし，評価や考察の主題として一貫して扱っているため，EDAが論文の明確な主要テーマになっている。",
+  "Clarity Score": 4,
+  "EDA": [
+    "モチベーションを高めることを目的としている。",
+    "ユーザのモチベーションを維持し，活動の継続意欲を高める可能性を秘めている。"
+  ]
+}
+
+==== IPSJ-EC2024076.txt ====
+```json
+{
+  "Targets": ["コンテンツユーザー"],
+  "Design Targeted EDA Reason": "本研究では「お金を投げている感覚」を提示することを明確なデザイン要件として掲げ、トリガーの抵抗制御によってその感覚をユーザに与える手法を提案しているため。",
+  "Design Targeted EDA": true,
+  "Propose EDA Reason": "提案手法は、投げ銭時のボタンの抵抗値・押す深さを金額ごとに変えることで、ユーザの触覚を操作し、意図的に感情的・身体的な反応（重さを感じる、達成感や躊躇が生まれるなど）を引き起こすことを目的としているため。",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "実験結果とアンケートを通じて「お金を投げている実感」「達成感」「躊躇」「臨場感・存在感」など、どのような感覚が誘発されたかを詳細に議論しているため。",
+  "Analyze EDA": true,
+  "Clarity Score reason": "触覚提示によるユーザ体験向上（具体的には投げ銭時の感覚演出）が論文の主題として一貫して扱われ、その効果が実験的・主観的に検証されているため。",
+  "Clarity Score": 4,
+  "EDA": [
+    "お金を投げている感覚の提示",
+    "投げ銭におけるユーザ体験の向上",
+    "体験の向上により達成感が強くみられた",
+    "「お金の重さを感じ投げている実感があって楽しい」",
+    "「貢いでいる感覚があって嬉しい」",
+    "「重いことで投げていいのか冷静に考えられた」",
+    "「生活費の危機感を感じた」"
+  ]
+}
+```
+
+==== IPSJ-EC2024100.txt ====
+{
+    "Targets": ["視聴ユーザー"],
+    "Design Targeted EDA Reason": "論文内で「視聴者が空間への没入感を高く感じる視野角等の条件を探索する」と明示し，没入感を高めることを設計要件として挙げているため。",
+    "Design Targeted EDA": true,
+    "Propose EDA Reason": "ソーシャルVRを用いて実世界に近い没入的な体験共有環境を構築し，ユーザーの没入感や存在感を意図的に強化することを目的としているため。",
+    "Propose EDA": true,
+    "Analyze EDA Reason": "実験結果と今後の課題で「没入感の向上」「ゲームの視点映像の共有環境への没入感が高まったこと」といった感情反応（没入感）について議論しているため。",
+    "Analyze EDA": true,
+    "Clarity Score reason": "没入感（Immersion）の獲得が本研究の主要なテーマとして明確に設定され，その達成方法・評価が一貫して論じられているため。",
+    "Clarity Score": 4,
+    "EDA": [
+        "視聴者が空間への没入感を高く感じる視野角等の条件を探索する",
+        "第三者からの没入性を高めるため，一度表示された映像をその場に残すようにした",
+        "ゲーム画面への集中のあまりアバターの存在感が薄まることは，ゲームの視点映像の共有環境への没入感が高まったこととして評価できる"
+    ]
+}
+
+==== IPSJ-EC2024073.txt ====
+```json
+{
+  "Targets": [],
+  "Design Targeted EDA Reason": "この論文は、ミュージシャンにとってより人間らしい、インタラクティブなパフォーマンス体験を提供することを目指しているが、デザイン要件として特定の感情反応を明示していない。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "このシステムは即興体験を向上させることを意図しているが、著者は決してユーザーの感情的または感覚的状態に意図的に影響を与えるという観点でこれを捉えていない。",
+  "Propose EDA": false,
+  "Analyze EDA Reason": "この論文では、AI生成の伴奏がユーザーに期待される特定の感情（例：楽しさ、興奮、達成感）について議論されていない。",
+  "Analyze EDA": false,
+  "Clarity Score reason": "目標としている感情反応についての議論や仕様は論文のどこにも見当たらず、EDAの概念は完全に欠如している。",
+  "Clarity Score": 1,
+  "EDA": []
+}
+```
+
+==== IPSJ-EC2024002.txt ====
+```json
+{
+  "Targets": ["視聴者"],
+  "Design Targeted EDA Reason": "設計要件の中で「視聴者に臨場感がある映像を提供できる」「視聴者が楽しみながら動物観察ができる」といった感情的な体験（臨場感・楽しさ）を明確に定義しているため。",
+  "Design Targeted EDA": true,
+  "Propose EDA Reason": "システムの目的として「臨場感あふれるオンラインツアーを提供する」「高い満足度を得る」といった、ユーザーの感情状態（没入感、楽しさ、満足感）への働きかけを明示的に掲げているため。",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "実運用後にアンケート調査を行い、満足度（楽しさ・面白さ）、訪問意欲、画質・音質の評価などユーザーの感じた感情反応を定量・定性で議論しているため。",
+  "Analyze EDA": true,
+  "Clarity Score reason": "設計要件から評価まで一貫して「臨場感」「楽しさ」「満足度」を扱っており、感情体験（EDA）が論文中の重要なテーマになっているものの、技術的改良が主題であるためややフォーカスが分散している。",
+  "Clarity Score": 3,
+  "EDA": [
+    "視聴者に臨場感がある映像を提供できる",
+    "臨場感あふれるジャングルバスオンラインツアーを提供することで，視聴者が楽しみながら動物観察ができるツアーを目指す"
+  ]
+}
+```
+
+==== IPSJ-EC2024013.txt ====
+```json
+{
+  "Targets": ["プレイヤ"],
+  "Design Targeted EDA Reason": "論文中で「没入感」「イリュージョン感覚」「納得感」「意外性」を明確にゲームデザイン要件として掲げているため。",
+  "Design Targeted EDA": true,
+  "Propose EDA Reason": "現実世界とデジタル世界をリンクさせることでプレイヤの感情状態（没入感や満足感、驚き）を意図的に喚起することを目的としているため。",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "システムの利用によって「より深い没入感と満足感を得る」「適度な納得感」といった具体的な感情反応を得ることを論じているため。",
+  "Analyze EDA": true,
+  "Clarity Score reason": "感情喚起（没入感・納得感・意外性）の追求が論文の中心テーマとして繰り返し明示されているため。",
+  "Clarity Score": 4,
+  "EDA": [
+    "プレイヤの没入感やイリュージョン感覚を高めることができる",
+    "プレイヤの意図や工夫が反映される「納得感」と，時には「意外な展開」を生じさせることを目指す",
+    "より深い没入感と満足感を得ることができる",
+    "プレイヤが「適度な納得感」を得る生成を実現し"
+  ]
+}
+```
+
+==== IPSJ-EC2024038.txt ====
+```json
+{
+  "Targets": [],
+  "Design Targeted EDA Reason": "本研究は視覚的特徴とオノマトペの対応関係をデータ収集・共有するためのゲームデザインを扱っており，ユーザに特定の感情反応（楽しさや没入感など）を明示的に要件として定義していないため。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "提案内容は主にオノマトペの収集効率とプレイヤ間の認識共有を目的としており，ユーザの感情状態に意図的に働きかけることを狙いとしていないため。",
+  "Propose EDA": false,
+  "Analyze EDA Reason": "実験結果や考察においても，ゲーム利用によってユーザがどのような感情を抱くかについての言及や分析が行われていないため。",
+  "Analyze EDA": false,
+  "Clarity Score reason": "感情変化を扱う記述や意図が一切見られず，EDA に該当しない。",
+  "Clarity Score": 1,
+  "EDA": []
+}
+```
+

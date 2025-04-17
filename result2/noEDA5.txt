@@ -1,0 +1,63 @@
+==== IPSJ-EC2024020.txt ====
+```json
+{
+  "Targets": [],
+  "Design Targeted EDA Reason": "論文の設計要件は、プレイヤー間の目標意識と身体動作の共有に焦点を当てているが、引き起こすべき特定の感情反応については明示されていない。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "コンテンツの目的は、動作の共通性を維持し、コミュニケーションの機会を増やすことであり、ユーザーに特定の感情状態を意図的に影響または喚起することではない。",
+  "Propose EDA": false,
+  "Analyze EDA Reason": "論文は、システムを使用する際に予想される感情や感情反応の種類について分析や議論を行っていない。",
+  "Analyze EDA": false,
+  "Clarity Score reason": "意図的にユーザーの感情をターゲットにしたり測定したりすることには言及しておらず、EDAについても全く触れていない。",
+  "Clarity Score": 1,
+  "EDA": []
+}
+```
+
+==== IPSJ-EC2024026.txt ====
+{
+  "Targets": [],
+  "Design Targeted EDA Reason": "This paper focuses on the technical method of automatic line drawing coloring and does not explicitly specify emotional responses (such as sense of achievement, enjoyment, liberation) that should be elicited in users as design requirements.",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "The proposed method aims to reduce workload and improve efficiency in coloring tasks, but does not intend to intentionally change the user's emotional state.",
+  "Propose EDA": false,
+  "Analyze EDA Reason": "It does not discuss or evaluate what kind of emotional responses might be obtained during use, and there is no discussion of emotional effects.",
+  "Analyze EDA": false,
+  "Clarity Score reason": "Emotional design is not addressed at all, and it does not meet the requirements of EDA in any way.",
+  "Clarity Score": 1,
+  "EDA": []
+}
+
+==== IPSJ-EC2024018.txt ====
+{
+  "Targets": ["コンテンツユーザー"],
+  "Design Targeted EDA Reason": "本論文では打撃能力向上や視覚機能強化を目的とし、ユーザーの感情状態（楽しさや達成感など）を設計要件として明示していないため。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "提案手法はスポーツビジョン（KVA動体視力や眼と手の協応動作）の強化を狙いとしており、ユーザーの感情への意図的な働きかけを目的としていないため。",
+  "Propose EDA": false,
+  "Analyze EDA Reason": "ユーザーテストの結果として、「疲れる」「気持ちが良く，楽しい」といった感情的なフィードバックが報告されており、使用時に生じる感情応答について論じられているため。",
+  "Analyze EDA": true,
+  "Clarity Score reason": "EDAは主題ではなく、ユーザーテスト中の副次的な感想としてのみ登場しているため「主題ではあるが不明瞭」ではなく、むしろ「主題ではない」と判断。",
+  "Clarity Score": 2,
+  "EDA": [
+    "20球ミートするためにバットを振り続けることは疲れる",
+    "ボールをミートした場合にホームランのように飛んでいくため気持ちが良く，楽しい"
+  ]
+}
+
+==== IPSJ-EC2024004.txt ====
+```json
+{
+  "Targets": [],
+  "Design Targeted EDA": false,
+  "Design Targeted EDA Reason": "この論文は、Connected Hoopの技術的設計と機能に焦点を当てており、一般的な経験（例：新しいゲーム体験、動機付け）について述べているが、感情応答を明確かつ一義的に内容設計の要件として定義しているわけではない。",
+  "Propose EDA": true,
+  "Propose EDA Reason": "著者たちは、装置と関連するゲームを使用して、ユーザーの運動への動機付けを高め、楽しいゲーミフィケーションされた体験を提供することを明示的に目指している。",
+  "Analyze EDA": false,
+  "Analyze EDA Reason": "この論文はユーザーの行動やコメント（例：受容性、使いやすさ、関与）の報告を行っているが、どの特定の感情（例：楽しさ、達成感）が予測されているか、または測定されているかについて明示的に分析または議論していない。",
+  "Clarity Score": 2,
+  "Clarity Score reason": "感情や動機付けの効果について言及されているが、それらは主要な、明確に定義されたトピックとして扱われているわけではなく、主にデバイス設計、センシング性能、使いやすさの評価に焦点が当てられている。",
+  "EDA": []
+}
+```
+

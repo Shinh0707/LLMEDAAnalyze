@@ -51,7 +51,7 @@ def getEDA(text: str, log_path: str, filename: str):
     '''
     
     response = openai.chat.completions.create(
-        model="o3-mini-2025-01-31",
+        model="o4-mini-2025-04-16",
         messages=[
             {"role": "developer", "content": instruction},
             {"role": "user", "content": text}
@@ -105,19 +105,22 @@ def load_cached_texts(cache_dir: str):
     return texts, filepaths
 
 # キャッシュされたテキストを読み込む
-cache_dir = "PDF/cache/noEDA"  # ここを実際のディレクトリに置き換えて
-texts, paths = load_cached_texts(cache_dir)
-
-# 各テキストに対して EDA 推定を実行
-for i in range(5):
-    log_file_path = f"result/noEDA{i+1}.txt"
-    max_files = min(99,len(paths))
-    readed = 0
-    for text, path in zip(texts, paths):
-        filename = os.path.basename(path)
-        print(f"===={readed+1}/{max_files} {filename} ====")
-        getEDA(text, log_file_path, filename)
-        print("\n")
-        readed += 1
-        if readed >= max_files:
-            break
+files = ["hasEDA"] # "noEDA","littleEDA",
+target_dir = "result2/"
+os.makedirs(target_dir,exist_ok=True)
+for fl in files:
+    cache_dir = f"PDF/cache/{fl}"  # ここを実際のディレクトリに置き換えて
+    texts, paths = load_cached_texts(cache_dir)
+    # 各テキストに対して EDA 推定を実行
+    for i in range(5):
+        log_file_path = f"{target_dir}{fl}{i+1}.txt"
+        max_files = min(99,len(paths))
+        readed = 0
+        for text, path in zip(texts, paths):
+            filename = os.path.basename(path)
+            print(f"===={readed+1}/{max_files} {filename} ====")
+            getEDA(text, log_file_path, filename)
+            print("\n")
+            readed += 1
+            if readed >= max_files:
+                break

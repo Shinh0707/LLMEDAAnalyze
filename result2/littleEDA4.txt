@@ -1,0 +1,77 @@
+==== IPSJ-EC2024030.txt ====
+```json
+{
+  "Targets": ["鑑賞者"],
+  "Design Targeted EDA Reason": "システム設計時に「鑑賞者」の幸福度や好意など特定の心情をエンベロープとして定義し，これを必須のパラメータとして物語生成・編集の設計要件に組み込んでいるため。",
+  "Design Targeted EDA": true,
+  "Propose EDA Reason": "ストーリーのエンベロープ操作を通じて鑑賞者の興奮度や興味を意図的に制御し，感情的な反応を引き起こすことを狙いとしているため。",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "エンベロープの形状や傾きがどのように鑑賞者の興味やドラマ性に影響を与えるかを繰り返し論じ，具体的な効果例を示しているため。",
+  "Analyze EDA": true,
+  "Clarity Score reason": "エンベロープによる心の動きの可視化と制御が論文の中心テーマであり，鑑賞者の感情制御が明確に議論されているため。",
+  "Clarity Score": 4,
+  "EDA": [
+    "インターフェースには音楽制作ソフトにおいて音量の時間的変化を表すエンベロープを採用し，エンベロープで鑑賞者と登場人物の心の動きを表現する．",
+    "エンベロープの傾きを適切に操作することで，物語の展開にメリハリをつけ，鑑賞者の興味を惹きつけるドラマティックな展開を生み出せると考えられる．",
+    "鑑賞者や登場人物の心の動きを表す複数のエンベロープを操作することで，ストーリーを創作できるシステム「TaleShaper」を提案した．"
+  ]
+}
+```
+
+==== IPSJ-EC2024003.txt ====
+```json
+{
+  "Targets": ["diner"],
+  "Design Targeted EDA Reason": "この論文は、食べられるレンズの技術的設計と製造に焦点を当てており、特定の感情的反応（例：驚き、喜び）を明示的な設計要件として指定していません。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "アプリケーションは、視点に基づいて食べ物の外観を変えることによって、ダイナーを驚かせ、引き込むインタラクティブな食事体験を創造すると明示的に示されています。",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "この論文では、インタラクティブな視覚効果が「インタラクティブな驚き」を生み出し、見る行為を新しい食の体験に変えることを示し、期待される感情的反応を示しています。",
+  "Analyze EDA": true,
+  "Clarity Score reason": "感情的影響（インタラクティブな驚き）が言及されていますが、論文の主な焦点はシステム設計と製造にあります。",
+  "Clarity Score": 2,
+  "EDA": [
+    "この食体験は，食の場にインタラクティブな驚きを生み出すことができる。",
+    "食事そのものをインタラクティブな体験へと変化させることができる。"
+  ]
+}
+```
+
+==== IPSJ-EC2024006.txt ====
+```json
+{
+  "Targets": ["コンテンツユーザー"],
+  "Design Targeted EDA Reason": "この論文は、パフォーマンスとユーザーエクスペリエンスを向上させるために擬似ハプティックフィードバックの実装と評価に焦点を当てていますが、ユーザーに喚起されるべきターゲットの感覚反応として明示的な設計要件を述べていません。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "この研究は、ユーザーの自身の感情状態で擬似的な触覚感覚を喚起するために、視覚的な操作（指の形状の変化、色の変化、深さの変化）を故意に導入しています。",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "この論文は、擬似ハプティクスが喚起することを意図された感覚である「錯触覚」、「有用性」、「身体性」、および「空間知覚」といった期待されるおよび測定された感覚反応を報告および議論しています。",
+  "Analyze EDA": true,
+  "Clarity Score reason": "擬似ハプティック（擬似触覚）フィードバックとそれが引き起こす幻想は、論文の中心テーマであり、設計と評価の両方で深く議論されています。",
+  "Clarity Score": 4,
+  "EDA": [
+    "評価項目として操作時間, 接触時間, 精度を測定と各疑似触覚条件ごとに錯触覚, 有用性, 身体性, 空間知覚を測定するカスタムアンケートを実施した .",
+    "Q1 ターゲットに触れているような感覚があった（錯触覚）",
+    "Q2 ターゲットが表示されている場所で触れている感があった（錯触覚）",
+    "Q7 ターゲットに触れている間バーチャルハンドは自分の手であるように感じられた（身体性）",
+    "Q9 ターゲットと手の距離感が分かりやすかった（空間知覚）"
+  ]
+}
+```
+
+==== IPSJ-EC2024005.txt ====
+```json
+{
+  "Targets": [],
+  "Design Targeted EDA Reason": "This paper focuses on the customization of emoji parts and input performance (time, error rate, and load), and does not explicitly state the specific design requirements for how it induces emotions in users.",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "The purpose of the proposed system is to more accurately 'reflect' the user's emotional expression, rather than directly changing the user's mood or feelings.",
+  "Propose EDA": false,
+  "Analyze EDA Reason": "No empirical evaluation or qualitative analysis has been conducted on what emotions are evoked in users, and there is no discussion on emotional responses.",
+  "Analyze EDA": false,
+  "Clarity Score reason": "There are no mechanisms aimed at inducing emotions or analyses of emotional responses included, and it is not handled from the perspective of EDA.",
+  "Clarity Score": 1,
+  "EDA": []
+}
+```
+

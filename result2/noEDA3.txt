@@ -1,0 +1,65 @@
+==== IPSJ-EC2024020.txt ====
+{
+  "Targets": [],
+  "Design Targeted EDA Reason": "In this paper, emotional and affective responses are not explicitly specified as design requirements, focusing instead on mechanics of game experience such as shared experiences and communication promotion.",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "It is not aimed at directly manipulating or changing users' emotional states, but rather at enhancing the quality of experience through shared goal awareness and physical movements across different games.",
+  "Propose EDA": false,
+  "Analyze EDA Reason": "There is no mention of expected user emotional reactions (such as joy or immersion), and the effectiveness of the game is discussed only in terms of communication facilitation.",
+  "Analyze EDA": false,
+  "Clarity Score reason": "There is no discussion of emotion induction or feeling design/analysis, and no elements of EDA are recognized.",
+  "Clarity Score": 1,
+  "EDA": []
+}
+
+==== IPSJ-EC2024026.txt ====
+```json
+{
+  "Targets": [],
+  "Design Targeted EDA Reason": "この論文は色彩工程の自動化や労力削減などの技術的目的に特化しており、ユーザーの感情反応を設計要件として明示していないため。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "提案された手法は作業時間の短縮や精度の向上を目指しており、ユーザーの感情状態を意図的に操作しようとするものではないため。",
+  "Propose EDA": false,
+  "Analyze EDA Reason": "評価と検証の段階では、感情反応やユーザー体験の感覚について言及がなく、期待される感情効果の記述もないため。",
+  "Analyze EDA": false,
+  "Clarity Score reason": "感情誘発や心理的効果に関する記述が一切なく、純粋に技術的なアルゴリズムの提案と評価に終始しているため。",
+  "Clarity Score": 1,
+  "EDA": []
+}
+```
+
+==== IPSJ-EC2024018.txt ====
+{
+  "Targets": [],
+  "Design Targeted EDA Reason": "本論文では訓練システムの設計要件としてユーザーの感情反応（例：楽しさ、達成感、没入感など）を明示的に定義していないため。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "提案の目的は主にKVA動体視力や眼と手の協応動作など視覚機能のトレーニングであり、ユーザーの感情状態を意図的に操作・誘発することを狙っていないため。",
+  "Propose EDA": false,
+  "Analyze EDA Reason": "論文中で使用時にユーザーがどのような感情反応を抱くことを期待しているかについての言及がないため。",
+  "Analyze EDA": false,
+  "Clarity Score reason": "EDA（感情誘発）は本研究の主題ではなく、一切扱われていないため。",
+  "Clarity Score": 1,
+  "EDA": []
+}
+
+==== IPSJ-EC2024004.txt ====
+```json
+{
+  "Targets": ["ゲームプレイヤー", "ユーザー"],
+  "Design Targeted EDA Reason": "この論文ではデバイスの特徴と応用について述べているが、具体的な感情反応（例：喜び、達成感）を具体的な設計要件として明示していない。一般的な目標である「新しい体験」や「動機付け」について言及しているだけであり、明確な定義はない。",
+  "Design Targeted EDA": false,
+  "Propose EDA Reason": "著者は、フープとデジタルゲームを組み合わせることが、運動の動機付けや魅力的な経験を提供する手段となり得ると明確に述べており、ユーザーの動機付けの状態に影響を与える意図を示している。",
+  "Propose EDA": true,
+  "Analyze EDA Reason": "展示評価では、論文はユーザーの反応や関与度、ゲーム設計がどのように動機付けを喚起し、プレイへのハードルを下げたかについて議論しており、参加者が経験した感情の分析を示している。",
+  "Analyze EDA": true,
+  "Clarity Score reason": "動機付けや関与については議論されているが、主な焦点はハードウェア、センシング、技術的評価にあり、感情反応の設計や分析を主要なテーマとしていない。",
+  "Clarity Score": 2,
+  "EDA": [
+    "運動のモチベーションを喚起しうる形態",
+    "運動継続のモチベーション",
+    "モチベーションの喚起",
+    "ゲームにより運動などのモチベーションを喚起するゲーミフィケーションの好例"
+  ]
+}
+```
+
