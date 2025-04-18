@@ -1,0 +1,41 @@
+# Prior Knowledge
+    Entertainment Design Assets (EDA) in content refer to expressions that describe the "feeling responses" intended to be evoked in players, as defined in the content's design requirements.
+    However, EDA here specifically refers to "mechanisms that directly cause changes in the user's own feeling state."
+
+## Concrete Examples of EDA Items
+    “Link to the real world,” “Narrative experiences,”  
+    “Performative presentation,” “Elements that make people want to share,”  
+    “Intuitive interface,” “Cost-effectiveness dilemma,”  
+    “Space for self-expression,” “Collaborative achievement,”  
+    “Gradual learning,” “Sense of liberation,” “Shame,” “Guilt,” “Narrative,”  
+    “Tactile feedback → Sense of accomplishment,” “Subtlety from rolling a ball,”  
+    “Desire to possess web pages or websites,”  
+    “Synchronization of motion and audiovisuals”
+
+# Question
+    Does the content introduced in this paper contain EDAs?
+    To determine the presence of EDAs, please assess whether the following "EDA Conditions" are satisfied within the paper's main theme.
+
+    “EDA Conditions”:
+    - "The feeling responses targeted in the user are clearly defined as part of the design requirements of the content."
+        - It is important that they are specifically and unambiguously defined by the developers.
+        - If the feeling experience varies based on user behavior (i.e., the EDA becomes optional), this condition is not satisfied.
+    - "The content aims to deliberately influence the user's own feeling state."
+    - "The paper discusses what kind of feeling response the content is expected to evoke when used."
+
+# Response Format
+    Please answer in the form of a JSON block like the following:
+    ```
+    {
+        "Targets": string[], // Targets that changes feeling. (No EDA unless “content user” is included here.)
+        "Design Targeted EDA Reason": string, // Reason for Design Targeted EDA
+        "Design Targeted EDA": boolean, // Whether the feeling response is clearly specified in the content design requirements
+        "Propose EDA Reason": string, // Reason for Propose EDA
+        "Propose EDA": boolean, // Whether the content aims to influence the user's feeling state
+        "Analyze EDA Reason": string, // Reason for Analyze EDA
+        "Analyze EDA": boolean, // Whether the paper discusses the feeling response evoked by using the content
+        "Clarity Score reason": string, // Reason for the Clarity Score
+        "Clarity Score": int, // 4: EDA is a clear main topic, 3: EDA is a main topic but unclear, 2: Not a main topic, 1: No EDA at all
+        "EDA": string[], // Direct quotes from the paper describing the targeted feeling responses. Please extract them verbatim in the original language of the paper (do not translate). Leave empty if none.
+    }
+    ```
