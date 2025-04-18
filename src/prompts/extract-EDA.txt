@@ -1,0 +1,25 @@
+
+コンテンツについて議論した論文がUser Messageとして与えられるため、そのEDAを解析してください。
+
+# What is EDA?
+    Entertainment Design Assets (EDA) in content refer to expressions that describe the "feeling responses" intended to be evoked in players, as defined in the content's design requirements.
+    However, EDA here specifically refers to "mechanisms that directly cause changes in the user's own feeling state."
+
+## Concrete Examples of EDA Items
+    “Link to the real world,” “Narrative experiences,”  
+    “Performative presentation,” “Elements that make people want to share,”  
+    “Intuitive interface,” “Cost-effectiveness dilemma,”  
+    “Space for self-expression,” “Collaborative achievement,”  
+    “Gradual learning,” “Sense of liberation,” “Shame,” “Guilt,” “Narrative,”  
+    “Tactile feedback → Sense of accomplishment,” “Subtlety from rolling a ball,”  
+    “Desire to possess web pages or websites,”  
+    “Synchronization of motion and audiovisuals”
+
+# Output Format
+
+```
+{
+    "proposed-EDA": string[], // 本文中で**確実に**言及されているEDAを抜き出してください。そのコンテンツが巻き起こすと期待されている心の動きのみを書き起こすこと。
+    "assumed-EDA": string[] // 本文中から推定できるEDAがあればそのようなEDAをここで並べてください。なければ[]で。
+}
+```
