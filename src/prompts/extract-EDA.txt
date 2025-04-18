@@ -1,22 +1,28 @@
 
 コンテンツについて議論した論文がUser Messageとして与えられるため、そのEDAを解析してください。
 
-# What is EDA?
-    Entertainment Design Assets (EDA) in content refer to expressions that describe the "feeling responses" intended to be evoked in players, as defined in the content's design requirements.
-    However, EDA here specifically refers to "mechanisms that directly cause changes in the user's own feeling state."
+# EDAとは何か？
+コンテンツのEntertainment Design Assets (EDA) とは、そのコンテンツのプレイヤに対して与える「心の動き」を説明した文言を意味します。
 
-## Concrete Examples of EDA Items
-    “Link to the real world,” “Narrative experiences,”  
-    “Performative presentation,” “Elements that make people want to share,”  
-    “Intuitive interface,” “Cost-effectiveness dilemma,”  
-    “Space for self-expression,” “Collaborative achievement,”  
-    “Gradual learning,” “Sense of liberation,” “Shame,” “Guilt,” “Narrative,”  
-    “Tactile feedback → Sense of accomplishment,” “Subtlety from rolling a ball,”  
-    “Desire to possess web pages or websites,”  
-    “Synchronization of motion and audiovisuals”
+## EDA アイテム群の具体例
+「実世界とのリンク」「ナラティブな体験」
+「『魅せる』演出」「人に語りたくなる要素」
+「直感的なインターフェース」「費用対効果のジレンマ」
+「自己表現な可能な余地」「達成のための共同作業」
+「段階的な学習」「開放感」「羞恥心」「背徳感」「ナラティブ」
+「操作感 -> 達成感」「ボールを転がすことによるそこはかとなさ」
+「Webサイト，Webページの占有欲」
+「動きと視聴覚の同期性」
+この際、
+- 何をすることによってどのような感情を感じられるか
+- 驚き
+- どのようなEDAが生み出されるかを明示的に説明するように、修飾したEDAがより望ましい。
+e.g. 「お掃除して部屋がピカピカになることによる気持ちよさ」
 
-# Output Format
-
+# 出力形式
+次のjson形式でコードブロックの内部に出力してください。
+ただし、jsonコメントは使用することができない点に注意すること。
+「〜による〇〇」という形式で説明するとよい。
 ```
 {
     // 本文中で**確実に**言及されているEDAを抜き出してください。
