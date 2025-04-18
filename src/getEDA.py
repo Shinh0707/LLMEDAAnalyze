@@ -1,4 +1,3 @@
-from pathlib import Path
 import openai
 import os
 from LLMTasks import LLMTasks
@@ -9,6 +8,7 @@ with open(P, "r") as f:
     openai.api_key = f.read().strip()
 
 def getEDA(text: str, log_path: str, filename: str):
+    # タスクをパイプで繋げられる
     tasks = LLMTasks("./src/prompts/judge-EDA.txt") | LLMTasks("./src/prompts/translate.txt")
     translated  = tasks.execute(text)
     with open(log_path, "a", encoding="utf-8") as logf:
@@ -31,6 +31,7 @@ for fl in files:
         log_file_path = f"{target_dir}{fl}{i+1}.txt"
         max_files = min(99,len(paths))
         readed = 0
+        
         for text, path in zip(texts, paths):
             filename = os.path.basename(path)
             print(f"===={readed+1}/{max_files} {filename} ====")
