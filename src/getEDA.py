@@ -13,6 +13,9 @@ MODEL_NAME = "o4-mini-2025-04-16"
 RESULT_DIR = "result/o4-mini-extractEDA"
 REPEAT_TIME = 1
 
+REPORT_FORMAT = "Log"
+assert REPORT_FORMAT in ["Log", "JSONs"]
+
 def judgeEDA():     return LLMTasks("./src/prompts/judge-EDA.txt") | LLMTasks("./src/prompts/translate.txt")
 def extractEDA():   return LLMTasks("./src/prompts/extract-EDA.txt")
 TASKS = extractEDA()
@@ -29,14 +32,15 @@ def main():
         texts, paths = load_cached_texts(cache_dir)
         # 各テキストに対して EDA 推定を実行
         for i in range(REPEAT_TIME):
-            result_json_folder = result_folder/f"{fl}{i}"
-            os.makedirs(result_json_folder,exist_ok=True)
-            read_folder_and_report(texts, paths, result_json_folder)
+            trial_name = f"{fl}{i}"
+            result_json_folder = result_folder
+            read_folder_and_report(texts, paths, result_json_folder, trial_name)
 
 def read_folder_and_report(
         papers:list[str],
         paths:list[str],
         result_json_folder:Path,
+        trial_name:str,
         max_limit_files:int = 99
     ):
     """
@@ -48,16 +52,36 @@ def read_folder_and_report(
     for text, path in zip(papers, paths):
         print(f"===={readed_count+1}/{max_files} {os.path.basename(path)} ====")
         translated = TASKS.execute(text, MODEL_NAME)
-        report_result(translated, result_json_folder/f"{Path(path).name}.json")
+        
+        if REPORT_FORMAT == "Log":
+            report_result_in_log(translated, result_json_folder/f"{trial_name}.txt", Path(path).name)
+        elif REPORT_FORMAT == "JSONs":
+            report_result_in_jsons(translated, result_json_folder/trial_name/f"{Path(path).name}.json")
+        
         readed_count += 1
         if readed_count >= max_files: break
 
-def report_result(
-        answer_from_LLM: str, json_file_path: Path,
+def report_result_in_log(
+        answer_from_LLM: str, log_file_path: Path,
+        filename:str
     ):    
+    # ログ出力
+    os.makedirs(log_file_path.parent,exist_ok=True)
+    with open(log_file_path, "a", encoding="utf-8") as logf:
+        logf.write(f"==== {filename} ====\n")
+        logf.write(answer_from_LLM + "\n\n")
+    # 標準出力
+    print(answer_from_LLM)
+    print("\n")
+
+# FIXME: 一つのファイルに全ての論文のEDAの結果を収めたい
+def report_result_in_jsons(
+        answer_from_LLM: str, json_file_path: Path,
+    ):
+    os.makedirs(json_file_path.parent,exist_ok=True)
     json_data = extract_last_code_block(answer_from_LLM)
     # ログ出力
-    with open(json_file_path, "w", encoding="utf-8") as logf:
+    with open(json_file_path, "a", encoding="utf-8") as logf:
         logf.write(json_data)
     # 標準出力
     print(json_data)
