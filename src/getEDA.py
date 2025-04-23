@@ -9,7 +9,7 @@ from utility import extract_last_code_block
 
 
 EXE_DATETIME = datetime.now()
-TESTED_FOLDER = ["hasEDA"] # "noEDA","littleEDA",
+TESTED_FOLDER = ["test"] # "noEDA","littleEDA",
 MODEL_NAME = "o4-mini-2025-04-16"
 RESULT_DIR = "result/o4-mini-extractEDA"
 REPEAT_TIME = 1

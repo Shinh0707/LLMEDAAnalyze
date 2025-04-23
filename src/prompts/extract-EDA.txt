@@ -19,6 +19,14 @@
 - どのようなEDAが生み出されるかを明示的に説明するように、修飾したEDAがより望ましい。
 e.g. 「お掃除して部屋がピカピカになることによる気持ちよさ」
 
+    “EDA Conditions”:
+    - "The feeling responses targeted in the user are clearly defined as part of the design requirements of the content."
+        - It is important that they are specifically and unambiguously defined by the developers.
+        - If the feeling experience varies based on user behavior (i.e., the EDA becomes optional), this condition is not satisfied.
+    - "The content aims to deliberately influence the user's own feeling state."
+    - "The paper discusses what kind of feeling response the content is expected to evoke when used."
+
+
 # 出力形式
 次のjson形式でコードブロックの内部に出力してください。
 ただし、jsonコメントは使用することができない点に注意すること。
