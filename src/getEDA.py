@@ -1,4 +1,5 @@
 from datetime import date, datetime
+from enum import Enum
 from pathlib import Path
 import openai
 import os
@@ -13,8 +14,11 @@ MODEL_NAME = "o4-mini-2025-04-16"
 RESULT_DIR = "result/o4-mini-extractEDA"
 REPEAT_TIME = 1
 
-REPORT_FORMAT = "Log"
-assert REPORT_FORMAT in ["Log", "JSONs"]
+class ReportFormat(Enum):
+    LOG = 1
+    JSONS = 2
+REPORT_FORMAT = ReportFormat.LOG
+
 
 def judgeEDA():     return LLMTasks("./src/prompts/judge-EDA.txt") | LLMTasks("./src/prompts/translate.txt")
 def extractEDA():   return LLMTasks("./src/prompts/extract-EDA.txt")
@@ -53,9 +57,9 @@ def read_folder_and_report(
         print(f"===={readed_count+1}/{max_files} {os.path.basename(path)} ====")
         translated = TASKS.execute(text, MODEL_NAME)
         
-        if REPORT_FORMAT == "Log":
+        if REPORT_FORMAT == ReportFormat.LOG:
             report_result_in_log(translated, result_json_folder/f"{trial_name}.txt", Path(path).name)
-        elif REPORT_FORMAT == "JSONs":
+        elif REPORT_FORMAT == ReportFormat.JSONS:
             report_result_in_jsons(translated, result_json_folder/trial_name/f"{Path(path).name}.json")
         
         readed_count += 1
