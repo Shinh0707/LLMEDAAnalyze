@@ -4,43 +4,48 @@
 # EDAとは何か？
 コンテンツのEntertainment Design Assets (EDA) とは、そのコンテンツのプレイヤに対して与える「心の動き」を説明した文言を意味します。
 
+## EDAの定性的定義
+次の条件が満たされている場合に限り、コンテンツ$C$はEntertainment Design Assets$A$を備えている：
+I. Defined（明示的定義）
+    心の動き$A$がコンテンツ$C$の設計要件として明確に定義・言及されている。
+II. Suggested（調和性）
+    心の動き$A$がコンテンツ$C$の既存の設計要件・EDAを阻害せず、それらと共存可能である。
+III. Contextual Specificity（文脈的特異性）
+    心の動き$A$は$C$における設計要件により、
+        ① その要件が存在しない場合に比べて$A$の程度が著しく向上している
+        または
+        ② 要件が存在しない場合とは異なる体験価値が生まれている
+    場合に限りEDAとして妥当である。
+「〜による〇〇」という形式で説明するとよい。
+
 ## EDA アイテム群の具体例
 「実世界とのリンク」「ナラティブな体験」
 「『魅せる』演出」「人に語りたくなる要素」
 「直感的なインターフェース」「費用対効果のジレンマ」
 「自己表現な可能な余地」「達成のための共同作業」
-「段階的な学習」「開放感」「羞恥心」「背徳感」「ナラティブ」
-「操作感 -> 達成感」「ボールを転がすことによるそこはかとなさ」
-「Webサイト，Webページの占有欲」
-「動きと視聴覚の同期性」
-この際、
-- 何をすることによってどのような感情を感じられるか
-- 驚き
-- どのようなEDAが生み出されるかを明示的に説明するように、修飾したEDAがより望ましい。
-e.g. 「お掃除して部屋がピカピカになることによる気持ちよさ」
-
-    “EDA Conditions”:
-    - "The feeling responses targeted in the user are clearly defined as part of the design requirements of the content."
-        - It is important that they are specifically and unambiguously defined by the developers.
-        - If the feeling experience varies based on user behavior (i.e., the EDA becomes optional), this condition is not satisfied.
-    - "The content aims to deliberately influence the user's own feeling state."
-    - "The paper discusses what kind of feeling response the content is expected to evoke when used."
-
 
 # 出力形式
 次のjson形式でコードブロックの内部に出力してください。
-ただし、jsonコメントは使用することができない点に注意すること。
-「〜による〇〇」という形式で説明するとよい。
 ```
 {
-    // 本文中で**確実に**言及されているEDAを抜き出してください。
-    // そのコンテンツが巻き起こすと期待されている心の動きのみを書き起こすこと。
-    // 数よりも質を重視してください。
-    "proposed-EDA": string[], 
+    // 本文中で**確実に**定義されたEDAを記述してください。
+    // 数よりも質を重視してください。該当するものがなければ空配列[]で問題ありません。
+    "defined-by-developer-EDA": string[], 
 
-    // 本文中から明瞭に推定できるEDAがあればそのようなEDAをここで並べてください。
-    // なければ[]で。確信度が高い順に並べましょう。
+    // このシステムで恩恵を受ける人（ターゲット）について考察してください。どのようなことを実現したいと考える人でしょうか？
+        // Maslowの欲求段階説：生理的欲求・安全の欲求・社会的欲求・承認欲求・自己実現の欲求
+    // 網羅性よりも、開発者が想定する主要な人を挙げるように心がけましょう。数よりも質を重視してください。
+    // 「〜〜したい〇〇」という形式で書きましょう。
+    "target": string[],
+
+    // 上で挙げたターゲット`target`が、実験とは異なる文脈でこのシステムに触れたとします。
+    // 実験の記述にとらわれず、その人がこのシステムを使って何をするかを推量しましょう。
+    // このシステムはいつ、どこで、どのように、どうやって、何のために使われるでしょうか？
+    // できるだけ多くのケースを掲げてください。
+    "use-case": string[],
+
+    // `target`が`use-case`を体験した時に生まれるであろうEDAについて考察してください。
     // 数よりも質を重視してください。
-    "assumed-EDA": string[]
+    "suggested-EDA": string[],
 }
 ```

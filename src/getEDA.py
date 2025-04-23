@@ -9,7 +9,7 @@ from utility import extract_last_code_block
 
 
 EXE_DATETIME = datetime.now()
-TESTED_FOLDER = ["test"] # "noEDA","littleEDA",
+TESTED_FOLDER = ["hasEDA"] # "noEDA","littleEDA",
 MODEL_NAME = "o4-mini-2025-04-16"
 RESULT_DIR = "result/o4-mini-extractEDA"
 REPEAT_TIME = 1
@@ -17,7 +17,7 @@ REPEAT_TIME = 1
 class ReportFormat(Enum):
     LOG = 1
     JSONS = 2
-REPORT_FORMAT = ReportFormat.LOG
+REPORT_FORMAT = ReportFormat.JSONS
 
 
 def judgeEDA():     return LLMTasks("./src/prompts/judge-EDA.txt") | LLMTasks("./src/prompts/translate.txt")
