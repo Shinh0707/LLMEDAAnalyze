@@ -2,77 +2,65 @@ from matplotlib import pyplot as plt
 import pandas as pd
 import glob
 import os
+import json
 from tqdm import tqdm
 import openai
 import numpy as np
-import umap
-
 
 # APIキーを読み込む
 P = "secrets/.OPENAI_API_KEY"
 with open(P, "r") as f:
     client = openai.OpenAI(api_key=f.read().strip())
 
-
 # 埋め込み取得関数
 def get_embedding(text: str, model: str = "text-embedding-3-large"):
     response = client.embeddings.create(
         input=text,
         model=model,
-        dimensions=32,
+        dimensions=2,
         encoding_format="float"
     )
     return np.array(response.data[0].embedding)
-def main():
-    # テキストファイルのパス一覧を取得
-    txt_files = glob.glob("result/o4-mini-extractEDA/20250424_045922/hasEDA0/*.json")
 
-    # 結果格納用リスト
+def json_to_kv_string(json_obj):
+    """JSONを key: value / key: value... 形式に整形"""
+    return "/".join(json_obj["defined-by-developer-EDA"]+[";"]+json_obj["suggested-EDA"])
+
+def main():
+    txt_files = glob.glob("result/o4-mini-extractEDA/20250424_045922/hasEDA0/*.json")
     records = []
 
-    # 各テキストファイルについて処理
     for path in tqdm(txt_files):
         with open(path, "r", encoding="utf-8") as f:
-            text = f.read()
-        
-        # テキストをEmbedding
+            data = json.load(f)  # JSONとしてロード
+        text = json_to_kv_string(data)
         embedding = get_embedding(text)
-        
-        # 保存するためにリスト化
         record = {
             "filename": os.path.basename(path),
             **{f"dim_{i}": val for i, val in enumerate(embedding)}
         }
         records.append(record)
+    return records
 
-# Pandas DataFrameに変換
-df = pd.read_csv("hasEDA_embeddings.csv")
-
-# "dim_" で始まる列名だけを抽出して行列化
-embedding_cols = [c for c in df.columns if c.startswith("dim_")]
-X = df[embedding_cols].to_numpy()    # shape = (N_documents, embedding_dim)
-
-# CSVに保存
-df.to_csv("hasEDA_embeddings.csv", index=False)
-
+records = main()
+df = pd.DataFrame(records)
+df.to_csv("hasEDA_embeddings2dfiltered3.csv", index=False)
 print("埋め込み完了してCSV保存しました。")
 
+# 可視化（filenameを表示）
+embedding_cols = [c for c in df.columns if c.startswith("dim_")]
+X = df[embedding_cols].to_numpy()
 
-# Run UMAP to 2D
-reducer = umap.UMAP(
-    n_components=2,
-    n_neighbors=15,
-    min_dist=0.1,
-    metric='euclidean',
-    random_state=42
-)
-embedding = reducer.fit_transform(X)
+plt.figure(figsize=(8, 8))
+plt.scatter(X[:, 0], X[:, 1], s=10)
 
-# Scatter plot
-plt.figure(figsize=(6, 6))
-plt.scatter(embedding[:, 0], embedding[:, 1], s=10)
-plt.title("UMAP projection to 2D")
-plt.xlabel("UMAP-1")
-plt.ylabel("UMAP-2")
+for i, row in df.iterrows():
+    plt.text(row["dim_0"], row["dim_1"], row["filename"], fontsize=7, alpha=0.7)
+
+plt.title("2D Embedding with filename annotations")
+plt.xlabel("dim_0")
+plt.ylabel("dim_1")
+plt.grid(True)
 plt.tight_layout()
 plt.show()
+plt.savefig()
