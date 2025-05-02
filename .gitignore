@@ -175,3 +175,5 @@ cython_debug/
 .pypirc
 
 result_archive
+PDF/ECSympo
+PDF/cache
