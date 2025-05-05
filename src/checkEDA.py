@@ -18,7 +18,7 @@ TESTED_FOLDER  = ["unstables"]  # 他に "noEDA","littleEDA" など
 MODEL_NAME     = "o4-mini-2025-04-16"
 RESULT_DIR     = "result/judgeEDA"
 REPEAT_TIME    = 5
-MAX_WORKERS    = 3         # 並行実行数
+MAX_WORKERS    = 5         # 並行実行数
 REPORT_FORMAT  = ReportFormat.JSONS
 
 def judgeEDA():    return LLMTasks("./src/prompts/judge-EDA.txt")
