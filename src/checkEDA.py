@@ -1,13 +1,12 @@
-from datetime import date, datetime
-from enum import Enum
+from datetime import datetime
 from pathlib import Path
 import openai
 import os
 
 from tqdm import tqdm
 from LLM.LLMTasks import LLMTasks
-from preprocess.loader import load_cached_texts
-from export.result import ReportFormat
+from preprocess.loader import load_api_key, load_cached_texts
+from export.result import ReportFormat, report_result
 
 
 EXE_DATETIME = datetime.now()
@@ -23,10 +22,7 @@ def extractEDA():   return LLMTasks("./src/prompts/extract-EDA.txt")
 TASKS = extractEDA()
 
 def main():
-    # openaiのキーを設定しておく
-    P = "secrets/.OPENAI_API_KEY"
-    with open(P, "r") as f:
-        openai.api_key = f.read().strip()
+    openai.api_key = load_api_key()
     # 実験する
     result_folder = Path(RESULT_DIR)/(EXE_DATETIME.strftime("%Y%m%d_%H%M%S"))
     for fl in tqdm(TESTED_FOLDER):
@@ -36,7 +32,7 @@ def main():
         for i in range(REPEAT_TIME):
             trial_name = f"{fl}{i}"
             result_json_folder = result_folder
-            outputs = read_folder_and_report(texts, paths, result_json_folder, TASKS, trial_name)
+            outputs = read_folder_and_report(texts, paths, TASKS)
             report_result(outputs, result_json_folder/f"{trial_name}.json")
         
 
@@ -44,10 +40,8 @@ def main():
 def read_folder_and_report(
         papers:list[str],
         paths:list[str],
-        result_json_folder:Path,
         tasks:LLMTasks,
-        trial_name:str,
-        max_limit_files:int = 99
+        max_limit_files:int = 999
     ):
     """
     paths[i]に格納されている論文papers[i]を読み、

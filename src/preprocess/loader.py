@@ -1,5 +1,9 @@
 import os
 
+def load_api_key():
+    P = "secrets/.OPENAI_API_KEY"
+    with open(P, "r") as f:
+        return f.read().strip()
 
 def load_cached_texts(cache_dir: str) -> tuple[list[str],list[str]]:
     """
