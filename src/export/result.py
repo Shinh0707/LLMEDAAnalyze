@@ -26,7 +26,7 @@ def report_result_in_log(
 	# ログ出力
 	os.makedirs(log_file_path.parent,exist_ok=True)
 	with open(log_file_path, "w", encoding="utf-8") as logf:
-		for filename, answer in answers_from_LLM:
+		for filename, answer in answers_from_LLM.items():
 			logf.write(f"==== {filename} ====\n")
 			logf.write(answer + "\n\n")
 
@@ -37,7 +37,7 @@ def report_result_in_json(
 	# ログ出力
 	os.makedirs(log_file_path.parent,exist_ok=True)
 	structured_answer = {}
-	for key, value in answers_from_LLM:
+	for key, value in answers_from_LLM.items():
 		structured_answer[key] = json.loads(value)
 	with open(log_file_path, "w") as f:
 		json.dump(answers_from_LLM, f, indent=4)
