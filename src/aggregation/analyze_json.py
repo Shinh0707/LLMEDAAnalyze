@@ -120,18 +120,13 @@ def aggregate_with_entropy_per_req(
                 top_tokens = get_top_meanful_tokens(info['reasons'][k], top_n=top_n)
                 row.append(";".join(top_tokens))
             writer.writerow(row)
-
-
+            
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="CSV の指定列から各行の二値エントロピーを計算し、その総和（結合エントロピー）を出力する。"
     )
     parser.add_argument("jsons_path", help="入力 JSON ファイルらが入っているフォルダ")
-    parser.add_argument(
-        "--out", "-o",
-        default="output.csv",
-        help="出力されているパス名(デフォルト: output.csv)"
-    )
     args = parser.parse_args()
-    aggregate_with_entropy_per_req(args.jsons_path, 'output.csv', top_n=5)
+    agg_path = os.path.join(args.jsons_path, "agg.csv")
+    aggregate_with_entropy_per_req(args.jsons_path, agg_path, top_n=5)
