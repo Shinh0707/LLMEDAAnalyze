@@ -1,6 +1,6 @@
 import pandas as pd
 from collections import Counter
-from word_analyze import extract_common_meaningful_tokens
+from aggregation.word_analyze import extract_common_meaningful_tokens
 
 # CSVファイルの読み込み（ファイル名は適宜変更）
 df = pd.read_csv("eda.csv")

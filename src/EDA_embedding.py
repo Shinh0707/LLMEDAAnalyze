@@ -25,7 +25,7 @@ def json_to_kv_string(json_obj):
     """JSONを key: value / key: value... 形式に整形"""
     return "/".join(json_obj["defined-by-developer-EDA"]+[";"]+json_obj["suggested-EDA"])
 
-def main():
+def fetch_embeddings():
     txt_files = glob.glob("result/o4-mini-extractEDA/20250424_045922/hasEDA0/*.json")
     records = []
 
@@ -41,7 +41,7 @@ def main():
         records.append(record)
     return records
 
-records = main()
+records = fetch_embeddings()
 df = pd.DataFrame(records)
 df.to_csv("hasEDA_embeddings2dfiltered3.csv", index=False)
 print("埋め込み完了してCSV保存しました。")
