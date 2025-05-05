@@ -6,22 +6,22 @@ import os
 from tqdm import tqdm
 from LLM.LLMTasks import LLMTasks
 from preprocess.loader import load_api_key, load_cached_texts
-from export.result import ReportFormat, report_result
+from export.result import ReportFormat, report_result, report_result_in_json
 from processors.over_folders import read_folder_and_report
 
 
 EXE_DATETIME = datetime.now()
-TESTED_FOLDER = ["test"] # "noEDA","littleEDA",
+TESTED_FOLDER = ["unstables"] # "noEDA","littleEDA",
 MODEL_NAME = "o4-mini-2025-04-16"
-RESULT_DIR = "result/end2end-EDA"
-REPEAT_TIME = 1
+RESULT_DIR = "result/judgeEDA"
+REPEAT_TIME = 5
 REPORT_FORMAT = ReportFormat.JSONS
 
 
-def judgeEDA():	 return LLMTasks("./src/prompts/judge-EDA.txt") | LLMTasks("./src/prompts/translate.txt")
+def judgeEDA():	 return LLMTasks("./src/prompts/judge-EDA.txt")
 def extractEDA():   return LLMTasks("./src/prompts/extract-EDA.txt")
 def end2end_extractEDA():   return LLMTasks("./src/prompts/end2end-extractEDA.txt")
-TASKS = end2end_extractEDA()
+TASKS = judgeEDA()
 
 def main():
 	openai.api_key = load_api_key()

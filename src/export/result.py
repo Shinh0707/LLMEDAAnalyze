@@ -2,6 +2,7 @@ from enum import Enum
 import json
 import os
 from pathlib import Path
+from sre_compile import isstring
 
 from utility import extract_last_code_block
 
@@ -39,5 +40,13 @@ def report_result_in_json(
 	structured_answer = {}
 	for key, value in answers_from_LLM.items():
 		structured_answer[key] = json.loads(value)
-	with open(log_file_path, "w") as f:
-		json.dump(answers_from_LLM, f, indent=4)
+	with open(log_file_path, "w", encoding="utf-8") as f:
+		json.dump(structured_answer, f, ensure_ascii=False, indent=4)
+
+if __name__ == "__main__":
+	report_result_in_json(
+		{
+			"ABC.txt": "{\"EDA1\": \"contentあああ\"}"
+		}, 
+		Path("a.json")
+	)

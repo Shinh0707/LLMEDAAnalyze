@@ -1,41 +1,45 @@
-# Prior Knowledge
-    Entertainment Design Assets (EDA) in content refer to expressions that describe the "feeling responses" intended to be evoked in players, as defined in the content's design requirements.
-    However, EDA here specifically refers to "mechanisms that directly cause changes in the user's own feeling state."
+# 前提知識
+コンテンツにおけるEntertainment Design Assets（以下EDA）は、
+エンタテインメントコンテンツにおいて心を動かすデザインを説明した文書を指し、
+コンテンツを分類するにあたって有用な指標と期待されている。
 
-## Concrete Examples of EDA Items
-    “Link to the real world,” “Narrative experiences,”  
-    “Performative presentation,” “Elements that make people want to share,”  
-    “Intuitive interface,” “Cost-effectiveness dilemma,”  
-    “Space for self-expression,” “Collaborative achievement,”  
-    “Gradual learning,” “Sense of liberation,” “Shame,” “Guilt,” “Narrative,”  
-    “Tactile feedback → Sense of accomplishment,” “Subtlety from rolling a ball,”  
-    “Desire to possess web pages or websites,”  
-    “Synchronization of motion and audiovisuals”
+EDAは、システムに関する次の記述から構成される。
+- 目的：システムがどのような「心の動き」を達成するか。
+- 要件定義：目的を達成するために、システムがどのような条件を満たすべきか。
+- 外部仕様：要件を満たすために、システムがどのように（厳密に）振る舞うべきか。
+また、良いEDAとしては、次の要件を満たす必要がある。
+- 極小性：要件定義・仕様は掲げた「心の動き」を実現する極小のものであると示せる。
+ 	- 言い換えれば、要件・仕様を一部満たさないシステムでは達成できないことが明確に判別できる。
 
-# Question
-    Does the content introduced in this paper contain EDAs?
-    To determine the presence of EDAs, please assess whether the following "EDA Conditions" are satisfied within the paper's main theme.
+ここでいう心の動きの具体例を以下に示そう。
+実世界とのリンク
+/ ナラティブな体験
+/ 「魅せる」演出
+/ 人に語りたくなる要素
+/ 直感的なインターフェース
+/ 費用対効果のジレンマ
+/ 自己表現な可能な余地
+/ 達成のための共同作業
+/ 段階的な学習
 
-    “EDA Conditions”:
-    - "The feeling responses targeted in the user are clearly defined as part of the design requirements of the content."
-        - It is important that they are specifically and unambiguously defined by the developers.
-        - If the feeling experience varies based on user behavior (i.e., the EDA becomes optional), this condition is not satisfied.
-    - "The content aims to deliberately influence the user's own feeling state."
-    - "The paper discusses what kind of feeling response the content is expected to evoke when used."
+# 指示
+論文がEDAについて議論しているとは、次のような条件を全て満たしていることとする。
+- あるシステムSystemによって提供されたエンタテインメント的な体験を享受するユーザをUserとする。
+- 要件1. Systemを体験することによって引き起されると期待するUserの心の動き・情動を、情動語・心理状態を表す語によって開発者が明示している。
+- 要件2. 掲げられた心の動きは「楽しい」「驚き」程度に漠然ではなく、システムの一部を欠くと心の動きが達成できなくなることがわかる。これは直接言及されている必要はなく、推測できればよい。
+- 要件3. システムの目的を満たすためのSの要求事項について解説・議論しており、Sのデザインによって目標に掲げた「心の動き」が達成されると述べた因果表現がある。
+それぞれの要件1, 2, 3に対して、当てはまるか、当てはまらないかをtrue / falseで回答せよ。
 
-# Response Format
-    Please answer in the form of a JSON block like the following:
-    ```
-    {
-        "Targets": string[], // Targets that changes feeling. (No EDA unless “content user” is included here.)
-        "Design Targeted EDA Reason": string, // Reason for Design Targeted EDA
-        "Design Targeted EDA": boolean, // Whether the feeling response is clearly specified in the content design requirements
-        "Propose EDA Reason": string, // Reason for Propose EDA
-        "Propose EDA": boolean, // Whether the content aims to influence the user's feeling state
-        "Analyze EDA Reason": string, // Reason for Analyze EDA
-        "Analyze EDA": boolean, // Whether the paper discusses the feeling response evoked by using the content
-        "Clarity Score reason": string, // Reason for the Clarity Score
-        "Clarity Score": int, // 4: EDA is a clear main topic, 3: EDA is a main topic but unclear, 2: Not a main topic, 1: No EDA at all
-        "EDA": string[], // Direct quotes from the paper describing the targeted feeling responses. Please extract them verbatim in the original language of the paper (do not translate). Leave empty if none.
-    }
-    ```
+# 回答形式
+次のようなコードブロックの形式で解答せよ。
+```json
+{
+	"Systemによって提供されたエンタテインメント的な体験を享受するユーザ": string, // 明確に記述されていなければ空文字列""を用いよ。これは評価において定められるものではなく、設計段階で想定されていなくてはならない。
+	"要件1の理由": string,
+	"要件1": boolean,
+	"要件2の理由": string,
+	"要件2": boolean,
+	"要件3の理由": string,
+	"要件3": boolean,
+}
+```
