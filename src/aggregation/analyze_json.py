@@ -1,3 +1,4 @@
+import argparse
 import os
 import json
 import csv
@@ -49,8 +50,8 @@ def aggregate_with_entropy_per_req(
     output_csv: str,
     top_n=10
 ):
-    req_keys = ['要件1','要件2','要件3','要件4']
-    combo_defs = {'要件1&2&4': ['要件1','要件2','要件4']}
+    req_keys = ['要件1','要件2','要件3']
+    combo_defs = {'要件1&2&3': ['要件1','要件2','要件3']}
     reason_keys = {k: f"{k}の理由" for k in req_keys}
 
     # stats[path] = {
@@ -123,4 +124,14 @@ def aggregate_with_entropy_per_req(
 
 
 if __name__ == "__main__":
-	aggregate_with_entropy_per_req('result/judgeEDA/renewal', 'output.csv', top_n=5)
+    parser = argparse.ArgumentParser(
+        description="CSV の指定列から各行の二値エントロピーを計算し、その総和（結合エントロピー）を出力する。"
+    )
+    parser.add_argument("jsons_path", help="入力 JSON ファイルらが入っているフォルダ")
+    parser.add_argument(
+        "--out", "-o",
+        default="output.csv",
+        help="出力されているパス名(デフォルト: output.csv)"
+    )
+    args = parser.parse_args()
+    aggregate_with_entropy_per_req(args.jsons_path, 'output.csv', top_n=5)

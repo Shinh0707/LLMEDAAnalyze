@@ -36,8 +36,8 @@ def main():
     parser.add_argument("csv_path", help="入力 CSV ファイルへのパス")
     parser.add_argument(
         "--column", "-c",
-        default="要件1&2&4",
-        help="確率が格納されている列名 (デフォルト: 要件1&2&4)"
+        default="要件1&2&3",
+        help="確率が格納されている列名 (デフォルト: 要件1&2&3)"
     )
     args = parser.parse_args()
 
