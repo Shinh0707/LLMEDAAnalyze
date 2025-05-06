@@ -14,7 +14,7 @@ def binary_entropy(p: float) -> float:
         return 0.0
     return -p * math.log2(p) - (1 - p) * math.log2(1 - p)
 
-def compute_joint_entropy(csv_path: str, col_name: str = "要件1&2&3") -> float:
+def compute_joint_entropy(csv_path: str, col_name: str) -> float:
     total_entropy = 0.0
     with open(csv_path, newline='', encoding='utf-8') as f:
         reader = csv.DictReader(f)

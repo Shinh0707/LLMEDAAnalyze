@@ -96,7 +96,6 @@ def aggregate_with_entropy_per_req(
     # CSV 出力
     with open(output_csv, 'w', newline='', encoding='utf-8') as cf:
         writer = csv.writer(cf)
-        # ヘッダー: 単一要件エントロピー + 複合条件エントロピー + top_tokens_要件X...
         header = (['file_path']
                   + req_keys
                   + list(combo_defs.keys())

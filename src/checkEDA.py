@@ -15,6 +15,7 @@ from aggregation import analyze_json
 from preprocess.loader import load_api_key, load_cached_texts
 from export.result import ReportFormat, report_result
 from processors.over_folders import read_folder_and_report
+from tools import joint_entropy
 
 # 定数
 MODEL_NAME: str = "o4-mini-2025-04-16"
@@ -75,6 +76,7 @@ def run_trial(
 
 def read_papers_in_paralell(
 		cache_dir:Path,
+		result_folder:Path,
 		args:argparse.Namespace,
 ):
 	# LLM タスク準備
@@ -90,7 +92,7 @@ def read_papers_in_paralell(
 		futures = []
 		for i in range(args.repeat):
 			trial_name: str = f"{args.folder}{i}"
-			output_path: Path = args.result_folder / f"{trial_name}.json"
+			output_path: Path = result_folder / f"{trial_name}.json"
 			futures.append(
 				executor.submit(
 					run_trial,
@@ -125,12 +127,14 @@ def main() -> None:
 	cache_root: Path = Path('PDF/cache')
 	folder: str = args.folder
 	cache_dir: Path = cache_root / folder
-	read_papers_in_paralell(cache_dir, args)
+	read_papers_in_paralell(cache_dir, result_folder, args)
 	
-	aggregation_path = cache_dir/"agg.csv"
-	analyze_json.aggregate_with_entropy_per_req(str(cache_dir), str(cache_dir/"agg.csv"), 10)
-	analyze_json.aggregate_with_entropy_per_req(str(cache_dir), str(cache_dir/"agg.csv"), 10)
-
+	aggregation_path = str(result_folder/"agg.csv")
+	analyze_json.aggregate_with_entropy_per_req(str(result_folder), aggregation_path, 10)
+	
+	for column in ["要件1", "要件2", "要件3", "要件1&2&3"]:
+		p = joint_entropy.compute_joint_entropy(aggregation_path, "要件1")
+		print(f"H({column}) = {p}")
 
 if __name__ == '__main__':
 	main()
