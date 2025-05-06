@@ -11,6 +11,7 @@ from typing import List, Tuple
 import openai
 
 from LLM.LLMTasks import LLMTasks
+from aggregation import analyze_json
 from preprocess.loader import load_api_key, load_cached_texts
 from export.result import ReportFormat, report_result
 from processors.over_folders import read_folder_and_report
@@ -72,26 +73,13 @@ def run_trial(
     outputs = read_folder_and_report(texts, paths, tasks, model_name)
     report_result(outputs, output_path)
 
-
-def main() -> None:
-    """
-    エントリーポイント: コマンドライン引数の解析、EDA タスクの実行
-    """
-    args: argparse.Namespace = parse_args()
-    # APIキー設定
-    openai.api_key = load_api_key()
-
-    # 結果ディレクトリ作成
-    result_folder: Path = Path(args.result_dir)
-    result_folder.mkdir(parents=True, exist_ok=True)
-
+def read_papers_in_paralell(
+        cache_dir:Path,
+        args:argparse.Namespace,
+):
     # LLM タスク準備
     tasks: LLMTasks = judgeEDA_task()
-
-    cache_root: Path = Path('PDF/cache')
-    folder: str = args.folder
-    cache_dir: Path = cache_root / folder
-
+    
     if not cache_dir.exists() or not cache_dir.is_dir():
         raise FileNotFoundError(f"Cache folder not found: {cache_dir}")
 
@@ -101,8 +89,8 @@ def main() -> None:
     with ThreadPoolExecutor(max_workers=args.workers) as executor:
         futures = []
         for i in range(args.repeat):
-            trial_name: str = f"{folder}{i}"
-            output_path: Path = result_folder / f"{trial_name}.json"
+            trial_name: str = f"{args.folder}{i}"
+            output_path: Path = args.result_folder / f"{trial_name}.json"
             futures.append(
                 executor.submit(
                     run_trial,
@@ -117,9 +105,28 @@ def main() -> None:
         for _ in tqdm(
             as_completed(futures),
             total=len(futures),
-            desc=f"Processing {folder}"
+            desc=f"Processing {args.folder}"
         ):
             pass
+	
+
+def main() -> None:
+    """
+    エントリーポイント: コマンドライン引数の解析、EDA タスクの実行
+    """
+    args: argparse.Namespace = parse_args()
+    # APIキー設定
+    openai.api_key = load_api_key()
+
+    # 結果ディレクトリ作成
+    result_folder: Path = Path(args.result_dir)
+    result_folder.mkdir(parents=True, exist_ok=True)
+
+    cache_root: Path = Path('PDF/cache')
+    folder: str = args.folder
+    cache_dir: Path = cache_root / folder
+    read_papers_in_paralell(cache_dir, args)
+    analyze_json.aggregate_with_entropy_per_req(str(cache_dir), str(cache_dir/"agg.csv"), 10)
 
 
 if __name__ == '__main__':
