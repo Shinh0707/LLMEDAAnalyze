@@ -3,7 +3,7 @@
 
 import argparse
 from pathlib import Path
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import Future, ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 from datetime import datetime
 from typing import List, Tuple
@@ -89,7 +89,7 @@ def read_papers_in_paralell(
 
 	# 並列実行
 	with ThreadPoolExecutor(max_workers=args.workers) as executor:
-		futures = []
+		futures:list[Future] = []
 		for i in range(args.repeat):
 			trial_name: str = f"{args.folder}{i}"
 			output_path: Path = result_folder / f"{trial_name}.json"
@@ -104,13 +104,16 @@ def read_papers_in_paralell(
 				)
 			)
 
-		for _ in tqdm(
-			as_completed(futures),
-			total=len(futures),
-			desc=f"Processing {args.folder}"
-		):
-			pass
-	
+		for future in tqdm(
+            as_completed(futures),
+            total=len(futures),
+            desc=f"Processing {args.folder}"
+        ):
+			try:
+				# 結果を取得することで例外を検出
+				future.result()
+			except Exception as e:
+				print(f"Error in future {future}: {e}")
 
 def main() -> None:
 	"""
@@ -132,9 +135,10 @@ def main() -> None:
 	aggregation_path = str(result_folder/"agg.csv")
 	analyze_json.aggregate_with_entropy_per_req(str(result_folder), aggregation_path, 10)
 	
-	for column in ["要件1", "要件2", "要件3", "要件1&2&3"]:
-		p = joint_entropy.compute_joint_entropy(aggregation_path, "要件1")
+	for column in ["要件1", "要件2", "要件3", "hasEDA"]:
+		p = joint_entropy.compute_joint_entropy(aggregation_path, column)
 		print(f"H({column}) = {p}")
+
 
 if __name__ == '__main__':
 	main()

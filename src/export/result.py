@@ -2,10 +2,6 @@ from enum import Enum
 import json
 import os
 from pathlib import Path
-from sre_compile import isstring
-
-from utility import extract_last_code_block
-
 
 class ReportFormat(Enum):
 	LOG = 1

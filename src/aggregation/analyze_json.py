@@ -51,7 +51,7 @@ def aggregate_with_entropy_per_req(
     top_n=10
 ):
     req_keys = ['要件1','要件2','要件3']
-    combo_defs = {'要件1&2&3': ['要件1','要件2','要件3']}
+    combo_defs = {'hasEDA': ['要件1','要件2','要件3']}
     reason_keys = {k: f"{k}の理由" for k in req_keys}
 
     # stats[path] = {
