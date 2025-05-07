@@ -48,10 +48,10 @@ def get_top_meanful_tokens(reason_texts, top_n=10):
 def aggregate_with_entropy_per_req(
     input_dir: str,
     output_csv: str,
+    req_keys:list[str],
     top_n=10
 ):
-    req_keys = ['要件1','要件2','要件3']
-    combo_defs = {'hasEDA': ['要件1','要件2','要件3']}
+    combo_defs = {'hasEDA': req_keys}
     reason_keys = {k: f"{k}の理由" for k in req_keys}
 
     # stats[path] = {
@@ -128,4 +128,4 @@ if __name__ == "__main__":
     parser.add_argument("jsons_path", help="入力 JSON ファイルらが入っているフォルダ")
     args = parser.parse_args()
     agg_path = os.path.join(args.jsons_path, "agg.csv")
-    aggregate_with_entropy_per_req(args.jsons_path, agg_path, top_n=5)
+    aggregate_with_entropy_per_req(args.jsons_path, agg_path, ["要件1", "要件2", "要件3"], top_n=5)

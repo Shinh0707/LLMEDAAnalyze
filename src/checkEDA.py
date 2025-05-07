@@ -133,9 +133,10 @@ def main() -> None:
 	read_papers_in_paralell(cache_dir, result_folder, args)
 	
 	aggregation_path = str(result_folder/"agg.csv")
-	analyze_json.aggregate_with_entropy_per_req(str(result_folder), aggregation_path, 10)
+	req_keys = ["Requirement 1", "Requirement 2", "Requirement 3"]
+	analyze_json.aggregate_with_entropy_per_req(str(result_folder), aggregation_path, req_keys, 10)
 	
-	for column in ["要件1", "要件2", "要件3", "hasEDA"]:
+	for column in req_keys + ["hasEDA"]:
 		p = joint_entropy.compute_joint_entropy(aggregation_path, column)
 		print(f"H({column}) = {p}")
 
