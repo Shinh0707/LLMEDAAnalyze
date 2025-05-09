@@ -10,7 +10,8 @@ import numpy as np
 # APIキーを読み込む
 P = "secrets/.OPENAI_API_KEY"
 with open(P, "r") as f:
-    client = openai.OpenAI(api_key=f.read().strip())
+	client = openai.OpenAI(api_key=f.read().strip())
+
 
 # 埋め込み取得関数
 def get_embedding(text: str, model: str = "text-embedding-3-large"):
@@ -41,25 +42,29 @@ def fetch_embeddings():
         records.append(record)
     return records
 
-records = fetch_embeddings()
-df = pd.DataFrame(records)
-df.to_csv("hasEDA_embeddings2dfiltered3.csv", index=False)
-print("埋め込み完了してCSV保存しました。")
+def main():
+	records = fetch_embeddings()
+	df = pd.DataFrame(records)
+	df.to_csv("hasEDA_embeddings2dfiltered3.csv", index=False)
+	print("埋め込み完了してCSV保存しました。")
 
-# 可視化（filenameを表示）
-embedding_cols = [c for c in df.columns if c.startswith("dim_")]
-X = df[embedding_cols].to_numpy()
+	# 可視化（filenameを表示）
+	embedding_cols = [c for c in df.columns if c.startswith("dim_")]
+	X = df[embedding_cols].to_numpy()
 
-plt.figure(figsize=(8, 8))
-plt.scatter(X[:, 0], X[:, 1], s=10)
+	plt.figure(figsize=(8, 8))
+	plt.scatter(X[:, 0], X[:, 1], s=10)
 
-for i, row in df.iterrows():
-    plt.text(row["dim_0"], row["dim_1"], row["filename"], fontsize=7, alpha=0.7)
+	for i, row in df.iterrows():
+		plt.text(row["dim_0"], row["dim_1"], row["filename"], fontsize=7, alpha=0.7)
 
-plt.title("2D Embedding with filename annotations")
-plt.xlabel("dim_0")
-plt.ylabel("dim_1")
-plt.grid(True)
-plt.tight_layout()
-plt.show()
-plt.savefig()
+	plt.title("2D Embedding with filename annotations")
+	plt.xlabel("dim_0")
+	plt.ylabel("dim_1")
+	plt.grid(True)
+	plt.tight_layout()
+	plt.show()
+	plt.savefig()
+
+if __name__ == "__main__":
+     main()

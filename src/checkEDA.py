@@ -5,8 +5,7 @@ import argparse
 from pathlib import Path
 from concurrent.futures import Future, ThreadPoolExecutor, as_completed
 from tqdm import tqdm
-from datetime import datetime
-from typing import List, Tuple
+from typing import List
 
 import openai
 
@@ -14,7 +13,7 @@ from LLM.LLMTasks import LLMTasks
 from aggregation import analyze_json
 from preprocess.loader import load_api_key, load_cached_texts
 from export.result import ReportFormat, report_result
-from processors.over_folders import read_folder_and_report
+from judgement.over_folders import read_folder_and_report
 from tools import joint_entropy
 
 # 定数
@@ -139,7 +138,6 @@ def main() -> None:
 	for column in req_keys + ["hasEDA"]:
 		p = joint_entropy.compute_joint_entropy(aggregation_path, column)
 		print(f"H({column}) = {p}")
-
 
 if __name__ == '__main__':
 	main()
