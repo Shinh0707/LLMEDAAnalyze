@@ -1,0 +1,22 @@
+{
+  "name": "eda-visualizer",
+  "version": "1.0.0",
+  "description": "- [Box](https://kwansei.box.com/s/mc17755i047wte124crvg6yjty8y4fvq)からPDFをDLして、`./PDF`に格納する - `src/loadPDF.py`を実行する。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shinh0707/LLMEDAAnalyze.git"
+  },
+  "author": "RKawaguchi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shinh0707/LLMEDAAnalyze/issues"
+  },
+  "homepage": "https://github.com/Shinh0707/LLMEDAAnalyze#readme",
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
